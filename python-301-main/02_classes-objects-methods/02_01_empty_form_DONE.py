@@ -10,3 +10,24 @@
 #
 # Model such an application form as a Python class below, and instantiate
 # a few objects from it.
+
+# Solution
+
+class DoctorForm:
+    """Doctor's form."""
+    def __init__(self, name:str, age:int, weight:int, height:int, new_patient:bool):
+        self.name = name
+        self.age = age
+        self.weight = weight
+        self.height = height
+        self.new_patiend = new_patient
+
+    def __str__(self):
+        first_time = "Yes" if self.new_patiend == True else self.new_patiend == "No"
+        return f"\nPatient name: {self.name}\nAge: {self.age} years\nWeight: {self.weight} kg\nHeight: {self.height} cm\nNew patient: {first_time}\n"
+
+Jorddy = DoctorForm("Jorddy", 33, 65, 171, True)
+Ryan = DoctorForm("Ryan", 45, 75, 178, False)
+
+print(Jorddy)
+print(Ryan)
