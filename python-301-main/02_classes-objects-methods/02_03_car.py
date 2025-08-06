@@ -6,3 +6,6 @@
 #
 # Create at least two different objects of this `Car()` class and demonstrate
 # changing the objects' attributes.
+
+# Solution
+

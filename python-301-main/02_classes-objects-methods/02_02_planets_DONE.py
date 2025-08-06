@@ -2,14 +2,15 @@
 # a planet object.
 # Use the appropriate dunder method to get informative output with `print()`
 
+# Solution:
 class Planet():
-    def __init__(self,name:str,diameter:int,number:int):
+    def __init__(self,name:str,diameter:int,position:int):
         self.name = name
         self.diameter = diameter
-        self.number = number
+        self.position = position
 
     def __str__(self):
-        return f"{self.name} is in the position #{self.number} away from the sun, with a diameter of {self.diameter} kms"
+        return f"{self.name} is in the position #{self.position} away from the sun, with a diameter of {self.diameter} kms"
     pass
 
 Mercury = Planet("Mercury", 4.879,1)
