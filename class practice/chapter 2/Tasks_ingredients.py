@@ -13,6 +13,13 @@ class Ingredient:
         """Expires the ingredient."""
         print(f"whoops, these {constructor.name} went bad...")
         constructor.name = "expired " + constructor.name
+    
+    def __str__(self):
+        return f"{self.name} ({self.quantity}) ({self.measure}) ({self.id})"
+    
+    def __repr__(self):
+        return f"Ingredient(name={self.name}, quantity={self.quantity}) measure={self.measure}) id={self.id})"
+    
 
 mint = Ingredient("mint",10,"leaves",1)
 alcohol = Ingredient("white rum",1.5,"ml",2)
@@ -32,3 +39,8 @@ ice.print_ingredient()
 print("Checking quality of ingredients:")
 lime.expire()
 print(lime.name)
+
+# __str__ and __repr__
+
+print(alcohol)  # OUTPUT: carrot (5)
+print(repr(alcohol))  # OUTPUT: Ingredient(name=carrot, amount=5)
