@@ -20,6 +20,10 @@ class Ingredient:
     def __repr__(self):
         return f"Ingredient(name={self.name}), quantity=({self.quantity}) measure=({self.measure}) id=({self.id})"
     
+    def __add__(self, other):
+        """Combines two ingredients."""
+        new_name = self.name + other.name
+        return Ingredient(name=new_name, quantity=2, measure="cubes limed", id=7)
 
 mint = Ingredient("mint",10,"leaves",1)
 alcohol = Ingredient("white rum",1.5,"ml",2)
@@ -27,6 +31,7 @@ sugar = Ingredient("white sugar",2,"tea spoons",3)
 lime = Ingredient("lime",0.5,"unit",4)
 soda  = Ingredient("club soda",90,"ml",5)
 ice  = Ingredient("ice",4,"cubes",6)
+limeice = lime.__add__(ice)
 
 print("Recipe for a Mojito Cubano:")
 mint.print_ingredient()
@@ -57,3 +62,11 @@ print(repr(sugar))
 print(repr(lime))  
 print(repr(soda))  
 print(repr(ice))  
+
+# __add__
+print("\nInformation using __add__:")
+print(str(limeice))
+p = 2
+i = 3
+s= p.__add__(i)
+print(s)
