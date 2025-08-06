@@ -9,6 +9,11 @@ class Ingredient:
     def print_ingredient(self):
         print(f"Ingredient {self.id}: {self.name}, add {self.quantity} {self.measure}")
 
+    def expire(constructor):
+        """Expires the ingredient."""
+        print(f"whoops, these {constructor.name} went bad...")
+        constructor.name = "expired " + constructor.name
+
 mint = Ingredient("mint",10,"leaves",1)
 alcohol = Ingredient("white rum",1.5,"ml",2)
 sugar = Ingredient("white sugar",2,"tea spoons",3)
@@ -23,3 +28,7 @@ sugar.print_ingredient()
 lime.print_ingredient()
 soda.print_ingredient()
 ice.print_ingredient()
+
+print("Checking quality of ingredients:")
+lime.expire()
+print(lime.name)
