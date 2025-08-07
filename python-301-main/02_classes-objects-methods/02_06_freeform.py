@@ -10,3 +10,57 @@
 # Be creative. Have some fun. :)
 # Using objects you can model anything you want:
 # Animals, paintings, card games, sports teams, trees, people etc...
+
+class HairBrush():
+    def __init__(self, name:str, cost:int, amount:int):
+        self.name = name
+        self.cost = cost
+        self.amount = amount
+
+    def __str__(self):
+        return (
+            f"Item: {self.name}\n"
+            f"Cost: ${self.cost}\n"
+            f"Quantity: {self.amount} units\n"
+        )
+    
+    def __add__(self,other):
+        new_name = self.name + " and " + other.name
+        new_amount = self.amount + other.amount
+        new_cost = self.cost + other.cost
+        return HairBrush(new_name, new_amount, new_cost)
+    
+yellow_hairbrushes = HairBrush("Yellow brushes", 12, 2)
+print(yellow_hairbrushes)
+    
+class Water():
+    def __init__(self, liters:int, color:str,name:str="water"):
+        self.liters = liters
+        self.color = color
+        self.name = name
+
+    def __str__(self):
+        return (
+            f"Item: {self.name}\n"
+            f"Liters: ${self.liters} L\n"
+            f"Color: {self.color}\n"
+        )
+
+    def __add__(self,other):
+        new_liters = self.liters + other.liters
+        if self.color == "transparent":
+            new_color = other.color
+        if self.color == "transparent" and other.color == "transparent":
+            new_color = "transparent"
+        if self.color == "brown":
+            new_color = "brown"
+            self.name = "Dirty water"
+        return Water(new_liters, new_color,self.name)
+    
+tap_water = Water(2,"brown")
+bottle_water = Water(5,"transparent")
+drilled_water = Water(20, "transparent")
+
+print(f"Tap water mixed with Bottle water:\n{tap_water + bottle_water}")
+print(f"Tap water mixed with Drilled water:\n{tap_water + drilled_water}")
+print(f"Bottle water mixed with Drilled water:\n{bottle_water + drilled_water}")
