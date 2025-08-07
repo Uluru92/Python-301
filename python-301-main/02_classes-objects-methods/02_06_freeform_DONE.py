@@ -11,7 +11,9 @@
 # Using objects you can model anything you want:
 # Animals, paintings, card games, sports teams, trees, people etc...
 
+# solution 
 class HairItems():
+    '''Items for hair'''
     def __init__(self, name:str, cost:int, amount:int):
         self.name = name
         self.cost = cost
@@ -46,9 +48,11 @@ print(hair_dryer)
 print(f"Hair stuff grouped:\n{hair_brushes + hair_dryer}")
 
 # Chaging an attribute value through a method
+print(hair_brushes.double())
 print(hair_dryer.double())
 
 class Water():
+    '''Everyday water'''
     def __init__(self, liters:int, color:str, source:str, name:str="water"):
         self.liters = liters
         self.color = color
@@ -92,3 +96,36 @@ print(f"\nTap water mixed with Bottle water:\n{tap_water + bottle_water}")
 print(f"Tap water mixed with Drilled water:\n{tap_water + drilled_water}")
 print(f"Bottle water mixed with Drilled water:\n{bottle_water + drilled_water}")
 
+
+class Pets():
+    '''Animals in our house'''
+    def __init__(self, specie:str,name:str, vaccinated:bool):
+        self.specie = specie
+        self.name = name
+        self.vaccinated = vaccinated
+    
+    def __str__(self):
+        state = "vaccinated" if self.vaccinated else "not vaccinated"
+        return (
+                f"Pet: {self.specie}\n"
+                f"Name: {self.name}\n"
+                f"Vaccinated: {state}\n"
+            )
+    
+    def visit_vet(self):
+        if not self.vaccinated:
+            print("Pet was vaccinated")
+            self.vaccinated = True
+        else:
+            print("Pet already vaccinated")
+
+# Instantiating objets from blueprint
+dog = Pets("dog", "Ollie", True)
+cat = Pets("cat", "Molly", False)
+
+print(dog)
+print(cat)
+
+# Chaging an attribute value through a method
+cat.visit_vet()
+print(cat)
