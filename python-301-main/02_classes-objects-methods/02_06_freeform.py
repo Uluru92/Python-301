@@ -11,7 +11,7 @@
 # Using objects you can model anything you want:
 # Animals, paintings, card games, sports teams, trees, people etc...
 
-class HairBrush():
+class HairItems():
     def __init__(self, name:str, cost:int, amount:int):
         self.name = name
         self.cost = cost
@@ -28,21 +28,26 @@ class HairBrush():
         new_name = self.name + " and " + other.name
         new_amount = self.amount + other.amount
         new_cost = self.cost + other.cost
-        return HairBrush(new_name, new_amount, new_cost)
+        return HairItems(new_name, new_amount, new_cost)
     
-yellow_hairbrushes = HairBrush("Yellow brushes", 12, 2)
-print(yellow_hairbrushes)
-    
+hair_brushes = HairItems("Yellow brush", 12, 1)
+print(HairItems)
+
+hair_dryer = HairItems("hair dryer", 20, 1)
+
+
+
 class Water():
-    def __init__(self, liters:int, color:str,name:str="water"):
+    def __init__(self, liters:int, color:str, source:str, name:str="water"):
         self.liters = liters
         self.color = color
         self.name = name
+        self.source = source
 
     def __str__(self):
         return (
             f"Item: {self.name}\n"
-            f"Liters: ${self.liters} L\n"
+            f"Liters: {self.liters} L\n"
             f"Color: {self.color}\n"
         )
 
@@ -57,10 +62,22 @@ class Water():
             self.name = "Dirty water"
         return Water(new_liters, new_color,self.name)
     
-tap_water = Water(2,"brown")
-bottle_water = Water(5,"transparent")
-drilled_water = Water(20, "transparent")
+    def refill(self, new_liters):
+        self.liters += new_liters
+        return print(f"You added {new_liters} liters to {self.source} {self.name}, now there are {self.liters} liters of {self.source} {self.name} ")
 
-print(f"Tap water mixed with Bottle water:\n{tap_water + bottle_water}")
+# Instantiating objets from blueprint
+tap_water = Water(2,"brown","tap")
+bottle_water = Water(5,"transparent", "bottle")
+drilled_water = Water(20, "transparent", "drilled")
+
+# Chaging an attribute value through a method
+tap_water.refill(4)
+bottle_water.refill(8)
+drilled_water.refill(10)
+
+# __add__ function
+print(f"\nTap water mixed with Bottle water:\n{tap_water + bottle_water}")
 print(f"Tap water mixed with Drilled water:\n{tap_water + drilled_water}")
 print(f"Bottle water mixed with Drilled water:\n{bottle_water + drilled_water}")
+
