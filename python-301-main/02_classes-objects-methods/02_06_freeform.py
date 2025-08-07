@@ -21,21 +21,32 @@ class HairItems():
         return (
             f"Item: {self.name}\n"
             f"Cost: ${self.cost}\n"
-            f"Quantity: {self.amount} units\n"
+            f"Quantity: {self.amount} elements\n"
         )
     
     def __add__(self,other):
         new_name = self.name + " and " + other.name
         new_amount = self.amount + other.amount
         new_cost = self.cost + other.cost
-        return HairItems(new_name, new_amount, new_cost)
+        return HairItems(new_name,new_cost,new_amount)
     
-hair_brushes = HairItems("Yellow brush", 12, 1)
-print(HairItems)
+    def double(self):
+        new_name = self.name
+        new_cost = self.cost*2
+        new_amount = self.amount*2
+        return HairItems(new_name, new_cost, new_amount)
+    
+# Instantiating objets from blueprint
+hair_brushes = HairItems("yellow hair brush", 11, 5)
+print(hair_brushes)
+hair_dryer = HairItems("blue hair dryer", 55, 2)
+print(hair_dryer)
 
-hair_dryer = HairItems("hair dryer", 20, 1)
+# __add__ function
+print(f"Hair stuff grouped:\n{hair_brushes + hair_dryer}")
 
-
+# Chaging an attribute value through a method
+print(hair_dryer.double())
 
 class Water():
     def __init__(self, liters:int, color:str, source:str, name:str="water"):
