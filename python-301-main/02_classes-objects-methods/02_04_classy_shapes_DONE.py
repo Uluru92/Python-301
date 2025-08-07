@@ -6,6 +6,8 @@
 # the area of both the rectangle and the circle, the perimeter
 # of the rectangle, and the circumference of the circle.
 
+# Solution:
+
 class rectangle():
     def __init__(self,length,width):
         self.length = length
