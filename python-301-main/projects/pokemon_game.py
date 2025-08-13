@@ -14,11 +14,12 @@
 
 
 class Pokemon:
-    def __init__(self, name:str, primary_type: str, max_hp:int, hp:int):
+    def __init__(self, name:str, primary_type: str, hp:int):
         self.name = name
         self.primary_type = primary_type
-        self.max_hp = max_hp
         self.hp = hp
+        self.max_hp = hp
+
         pass
 
     def __str__(self):
@@ -29,19 +30,41 @@ class Pokemon:
         )
 
     def battle(self, other):
-        pokemon_1 = self.name
-        pokemon_2 = other.name
+        print(f"Battle: {self.name} vs {other.name}!")
+        result = self.typewheel(self.primary_type, other.primary_type)
+        print(f"Pokemon {self.name} has {result} the match!\n")
 
-        logic_type = ["water":3, "fire":6, "grass":9]
-        logic_end = ["won":0, "lost":1, "tied":2]
+    @staticmethod
+    def typewheel (type1, type2):
+        logic_type = {"water":0, "fire":1, "grass":2}
+        logic_result = {0:"won", 1:"lost", 2:"tied"}
 
+        win_lose_matrix = [
+            [2,0,1], # Position 1: water
+            [1,2,0], # Position 2: fire
+            [0,1,2]  # Position 3: grass
+            ]
         
-        
-        pass
-
+        win_lose_result = win_lose_matrix[logic_type[type1]][logic_type[type2]]
+        return logic_result[win_lose_result]
+         
     def feed(self):
         if self.hp < self.max_hp:
             self.hp +=1
             print(f"Health restored +1 points. Actual HP: ({self.hp})/({self.max_hp})")
         else:
             print(f"{self.name} is already at full HP")
+
+water_pokemon = Pokemon("Water dude", "water", 100)
+fire_pokemon = Pokemon("Fire dude", "fire", 100)
+grass_pokemon = Pokemon("Grass dude", "grass", 100)
+
+# LETS BATTLE!
+
+water_pokemon.battle(water_pokemon)
+fire_pokemon.battle(water_pokemon)
+grass_pokemon.battle(water_pokemon)
+
+# LETS FEED SOME POKEMONS
+
+
