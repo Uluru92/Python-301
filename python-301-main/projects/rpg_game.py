@@ -1,5 +1,5 @@
-class Hero:
-    '''Main character'''
+class Character:
+    '''A base character...'''
     def __init__(self, name:str, hp_max:int, hp:int, magic_resist:int, armor:int, strenght: int, mana:int, agility:int, level:int, experience:int ):
         self.name = name
         self.hp_max = hp_max
@@ -12,3 +12,11 @@ class Hero:
         self.experience = level
   
         pass
+
+class Hero(Character):
+    
+    pass
+
+class Opponent(Character):
+
+    pass
