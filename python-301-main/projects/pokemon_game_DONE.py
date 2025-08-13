@@ -69,6 +69,7 @@ class Pokemon:
         else:
             print(f"{self.name} was feed, thought it's already at full HP")
 
+# LETS CREATE SOME POKEMONS FROM OUR CLASS!
 water_dude = Pokemon("Water dude", "water", 100)
 water_kid = Pokemon("Water kid", "water", 100)
 fire_dragon = Pokemon("Fire dragon", "fire", 100)
@@ -77,7 +78,6 @@ grass_horse = Pokemon("Grass horse", "grass", 100)
 grass_bird = Pokemon("Grass bird", "grass", 100)
 
 # LETS BATTLE!
-
 water_dude.battle(water_kid)
 fire_dragon.battle(grass_horse)
 grass_bird.battle(water_kid)
