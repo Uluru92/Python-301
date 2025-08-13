@@ -32,7 +32,21 @@ class Pokemon:
     def battle(self, other):
         print(f"Battle: {self.name} vs {other.name}!")
         result = self.typewheel(self.primary_type, other.primary_type)
-        print(f"Pokemon {self.name} has {result} the match!\n")
+        print(f"Pokemon {self.name} has {result} the match!")
+        if result == "won":
+            other.hp -= 10
+            print(f"- {other.name} has lost 10 health points, resulting with {other.hp}/{other.max_hp} HP\n")
+        elif result == "lost":
+            self.hp -= 10
+            print(f"- {self.name} has lost 10 health points, resulting with {self.hp}/{self.max_hp} HP\n")
+        else:
+            self.hp -= 5
+            other.hp -= 5
+            print(f"- Both fighters lost 5 health points.")
+            print(f"- {self.name} resulting with {self.hp}/{self.max_hp} HP.")
+            print(f"- {other.name} resulting with {other.hp}/{other.max_hp} HP.")
+            print(" ")
+            pass
 
     @staticmethod
     def typewheel (type1, type2):
@@ -51,20 +65,24 @@ class Pokemon:
     def feed(self):
         if self.hp < self.max_hp:
             self.hp +=1
-            print(f"Health restored +1 points. Actual HP: ({self.hp})/({self.max_hp})")
+            print(f"{self.name} was feed propertly. Health restored +1 points. Actual HP: ({self.hp})/({self.max_hp})")
         else:
-            print(f"{self.name} is already at full HP")
+            print(f"{self.name} was feed, thought it's already at full HP")
 
-water_pokemon = Pokemon("Water dude", "water", 100)
-fire_pokemon = Pokemon("Fire dude", "fire", 100)
-grass_pokemon = Pokemon("Grass dude", "grass", 100)
+water_dude = Pokemon("Water dude", "water", 100)
+water_kid = Pokemon("Water kid", "water", 100)
+fire_dragon = Pokemon("Fire dragon", "fire", 100)
+fire_woman = Pokemon("Fire woman", "fire", 100)
+grass_horse = Pokemon("Grass horse", "grass", 100)
+grass_bird = Pokemon("Grass bird", "grass", 100)
 
 # LETS BATTLE!
 
-water_pokemon.battle(water_pokemon)
-fire_pokemon.battle(water_pokemon)
-grass_pokemon.battle(water_pokemon)
+water_dude.battle(water_kid)
+fire_dragon.battle(grass_horse)
+grass_bird.battle(water_kid)
 
 # LETS FEED SOME POKEMONS
-
+grass_horse.feed()
+fire_dragon.feed()
 
