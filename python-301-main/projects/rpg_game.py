@@ -189,7 +189,24 @@ class Hero(Character):
 
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")
-
+        # Room 3, depth 1 (index 0) Priest appears!
+        if self.current_room.number == 3 and self.depth_in_room == 0:
+            if not self.current_room.ally_appears:
+                while True:
+                    choice = input("If you kneel, you receive the blessing of the Gods! knee or stand? (kneel/stand): ").strip().lower()
+                    if choice == "kneel":
+                        self.current_room.depths[self.depth_in_room] = "You are at depth 1: There is nothing else here."
+                        self.current_room.ally_appears == True
+                        print(f"{self.name} was blessed with the power of resurrection! You can come from Death once!")
+                        return
+                    elif choice == "stand":
+                        self.current_room.depths[self.depth_in_room] = "You are at depth 1: There is nothing else here."
+                        self.current_room.ally_appears == True
+                        print(f"{self.name}, you rejected the bless of the Gods... Good luck! *Priest desappears*")
+                        return
+                    else:
+                        print("Invalid choice. Please type 'fight' or 'run'.")
+                                       
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
         # Calculate win probability based on attributes
@@ -253,6 +270,7 @@ class Room:
         self.opponents = []          # Monsters in the room
         self.items = []              # Items in the room
         self.monster_defeated = False  # flag for the room's monster
+        self.ally_appears = False # flag for the room's ally
 
     def describe(self, depth):
         if depth < len(self.depths):
