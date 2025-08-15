@@ -108,16 +108,8 @@ class Hero(Character):
                             level=1,
                             experience=0
                         )
-                        
-                        # Calculate win probability
-                        hero_score = self.hp + self.strength + self.agility + self.mana + self.armor + self.magic_resist
-                        monster_score = small_golem.hp + small_golem.strength + small_golem.agility + small_golem.mana + small_golem.armor + small_golem.magic_resist
-                        probability = hero_score / (hero_score + monster_score)
-                        
-                        print(f"Probability to win: {round(probability*100)}%")
-                        
-                        # Decide outcome randomly
-                        if random.random() < probability:
+                        hero_won = hero.fight(small_golem)
+                        if hero_won:
                             print("You defeated the small golem!")
                             self.current_room.depths[self.depth_in_room] = "You are at depth 3: There is nothing else here."
                             self.current_room.monster_defeated = True
@@ -133,10 +125,13 @@ class Hero(Character):
                             print("You found a HP Potion!")
                             return
                         else:
-                            print("The small golem defeated you! You retreat to the main room.")
-                            self.hp -= 30  # small penalty
+                            self.hp -= 25  # big penalty
+                            print(f"The {small_golem.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
                             self.depth_in_room = 10
-                            return
+                            if self.hp <= 0:
+                                print("You lost the game!")
+                                exit()  # stops the game
+                            return  # exit the room
 
                     elif choice == "run":
                         print("You run back to the main room!")
@@ -183,6 +178,9 @@ class Hero(Character):
                             self.hp -= 65  # big penalty
                             print(f"The {dragon.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
                             self.depth_in_room = 10
+                            if self.hp <= 0:
+                                print("You lost the game!")
+                                exit()  # stops the game
                             return  # exit the room
 
                     elif choice == "run":
@@ -240,8 +238,6 @@ class Hero(Character):
                 f"Level: {self.level}\n"
                 f"Experience: {self.experience}\n"
                 f"Inventory: {self.inventory}\n")
-                
-
 
 class Ally(Character):
     def __init__(self, name, level):
