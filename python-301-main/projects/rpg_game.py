@@ -25,20 +25,6 @@ class Character:
 class Monster(Character):
     pass
 
-# Lets create the monsters!
-small_creature = Monster(
-    name="Small Golem",
-    hp_max=30,
-    hp=30,
-    magic_resist=5,
-    armor=5,
-    strength=10,
-    mana=5,
-    agility=8,
-    level=1,
-    experience=10
-)
-
 class Hero(Character):
     def __init__(self, name, hp_max, hp, magic_resist, armor, strength, mana, agility, level, experience):
         super().__init__(name, hp_max, hp, magic_resist, armor, strength, mana, agility, level, experience)
@@ -86,7 +72,7 @@ class Hero(Character):
             print(f"🎉 Level up! You are now Level {self.level}!")
     
     def check_special_event(self):
-    # Room 1, depth 2 (index 1) has a sword
+        # Room 1, depth 2 (index 1) has a sword
         if self.current_room.number == 1 and self.depth_in_room == 1:
             if "Sword" not in self.inventory:
                 while True:  # Loop until valid input
@@ -103,7 +89,7 @@ class Hero(Character):
                     print("You picked up the Sword! Your strength increased!")
                 else:
                     print("You leave the sword where it is.")
-
+        # Room 1, depth 3 (index 2) has a mosnter (small golem)
         if self.current_room.number == 1 and self.depth_in_room == 2:
             if not self.current_room.monster_defeated:
                 while True:  # loop until valid input
@@ -134,7 +120,7 @@ class Hero(Character):
                         if random.random() < probability:
                             print("You defeated the small golem!")
                             self.current_room.depths[self.depth_in_room] = "You are at depth 3: There is nothing else here."
-                            self.monster_defeated = True
+                            self.current_room.monster_defeated = True
                             # rewards
                             self.gain_experience(60)
                             self.hp_max += 5
@@ -145,12 +131,13 @@ class Hero(Character):
                             # potion added to inventory
                             self.inventory.append("HP Potion")
                             print("You found a HP Potion!")
+                            return
                         else:
                             print("The small golem defeated you! You retreat to the main room.")
                             self.hp -= 30  # small penalty
                             self.current_room = None
                             self.depth_in_room = 0
-                        break  # exit input loop after fight
+                            return
 
                     elif choice == "run":
                         print("You run back to the main room!")
