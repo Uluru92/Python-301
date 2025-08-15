@@ -145,7 +145,19 @@ class Hero(Character):
 
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")
-    
+        # Room 2, depth 1 (index 0) The air is thick and smoky, you lose hp just by entering this place
+        if self.current_room.number == 2 and self.depth_in_room == 0:
+            self.hp -= 5 # small penalty
+            print(f"It's hard to breath here, you lost 5 hp. Your actual HP: {self.hp}/{self.hp_max}")
+        # Room 2, depth 2 (index 1) You feel the heat intensify, you lose hp just by entering this place
+        if self.current_room.number == 2 and self.depth_in_room == 1:
+            self.hp -= 10 # medium penalty
+            print(f"There are flames everywhere, you lost 10 hp. Your actual HP: {self.hp}/{self.hp_max}")
+        # Room 2, depth 3 (index 2) Dragon apprears!
+        if self.current_room.number == 2 and self.depth_in_room == 2:
+            self.hp -= 15 # medium penalty
+            print(f"You got paralized for a moment just by the Dragon staring at you, you lost 15 hp. Your actual HP: {self.hp}/{self.hp_max}")
+
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
         # Calculate win probability based on attributes
@@ -219,7 +231,6 @@ class Room:
             return f"You are at depth {depth + 1}: {self.depths[depth]}"
         else:
             return "You can’t go deeper."
-        
 
 # Lets create some def!
 def select_door():
