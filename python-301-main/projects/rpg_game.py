@@ -31,9 +31,10 @@ class Hero(Character):
         self.inventory = []
         self.current_room = None
         self.depth_in_room = 0
+        self.blessed = False
 
     def enter_room(self, room):
-        self.current_room = room 
+        self.current_room = room
         self.depth_in_room = 0 # reset depth every time the Hero enters a room
         print(f"\nNow you are inside the {room.name}")
         print(room.describe(self.depth_in_room))
@@ -84,8 +85,8 @@ class Hero(Character):
                 if choice == "y":
                     self.inventory.append("Sword")
                     self.strength += 35  # Or whatever amount you want to increase
-                    self.current_room.depths[self.depth_in_room] = "You are at depth 2: There is nothing else here."
-                    self.current_room.depths[self.depth_in_room-1] = "You are at depth 1: There is nothing here."
+                    self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                    self.current_room.depths[self.depth_in_room-1] = "There is nothing here."
                     print("You picked up the Sword! Your strength increased!")
                 else:
                     print("You leave the sword where it is.")
@@ -111,7 +112,7 @@ class Hero(Character):
                         hero_won = hero.fight(small_golem)
                         if hero_won:
                             print("You defeated the small golem!")
-                            self.current_room.depths[self.depth_in_room] = "You are at depth 3: There is nothing else here."
+                            self.current_room.depths[self.depth_in_room] = "There is nothing else here."
                             self.current_room.monster_defeated = True
                             # rewards
                             self.gain_experience(60)
@@ -129,8 +130,14 @@ class Hero(Character):
                             print(f"The {small_golem.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
                             self.depth_in_room = 10
                             if self.hp <= 0:
-                                print("You lost the game!")
-                                exit()  # stops the game
+                                if self.blessed == True:
+                                    self.hp = 50
+                                    self.hp_max = 100
+                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
+                                    return
+                                else:
+                                    print("You lost the game!")
+                                    exit()  # stops the game
                             return  # exit the room
 
                     elif choice == "run":
@@ -138,7 +145,7 @@ class Hero(Character):
                         return  # exit the room
 
                     else:
-                        print("Invalid choice. Please type 'fight' or 'run'.")
+                        print("Invalid choice. Please type 'fight' or 'run'.")                     
         # Room 2, depth 1 (index 0) The air is thick and smoky, you lose hp just by entering this place
         if self.current_room.number == 2 and self.depth_in_room == 0:
             self.hp -= 5 # small penalty
@@ -154,18 +161,18 @@ class Hero(Character):
 
             if not self.current_room.monster_defeated:
                 while True:  # loop until valid input
-                    choice = input("A small golem appears from the shadows! Fight or run? (fight/run): ").strip().lower()
+                    choice = input("The Dragon Raid Boss appears from the flames! Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
                         dragon = Monster(
                             name="Dragon Raid Boss",
-                            hp_max=120,
-                            hp=120,
-                            magic_resist=70,
-                            armor=90,
-                            strength=110,
-                            mana=70,
-                            agility=0,
+                            hp_max=200,
+                            hp=2000,
+                            magic_resist=115,
+                            armor=130,
+                            strength=180,
+                            mana=80,
+                            agility=30,
                             level=25,
                             experience=0
                         )
@@ -175,12 +182,18 @@ class Hero(Character):
                             print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
                             exit()  # stops the game
                         else:
-                            self.hp -= 65  # big penalty
+                            self.hp -= 70  # big penalty
                             print(f"The {dragon.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
                             self.depth_in_room = 10
                             if self.hp <= 0:
-                                print("You lost the game!")
-                                exit()  # stops the game
+                                if self.blessed == True:
+                                    self.hp = 50
+                                    self.hp_max = 100
+                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
+                                    return
+                                else:
+                                    print("You lost the game!")
+                                    exit()  # stops the game
                             return  # exit the room
 
                     elif choice == "run":
@@ -195,18 +208,19 @@ class Hero(Character):
                 while True:
                     choice = input("If you kneel, you receive the blessing of the Gods! knee or stand? (kneel/stand): ").strip().lower()
                     if choice == "kneel":
-                        self.current_room.depths[self.depth_in_room] = "You are at depth 1: There is nothing else here."
-                        self.current_room.ally_appears == True
+                        self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                        self.current_room.ally_appears = True
+                        self.blessed = True
                         print(f"{self.name} was blessed with the power of resurrection! You can come from Death once!")
                         return
                     elif choice == "stand":
-                        self.current_room.depths[self.depth_in_room] = "You are at depth 1: There is nothing else here."
-                        self.current_room.ally_appears == True
+                        self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                        self.current_room.ally_appears = True
                         print(f"{self.name}, you rejected the bless of the Gods... Good luck! *Priest desappears*")
                         return
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")
-                                       
+                                  
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
         # Calculate win probability based on attributes
@@ -264,13 +278,13 @@ class Ally(Character):
 
 class Room:
     def __init__(self, number, name, depths):
-        self.number = number         # Door number
-        self.name = name             # Room title
-        self.depths = depths         # List of strings for each depth
-        self.opponents = []          # Monsters in the room
-        self.items = []              # Items in the room
-        self.monster_defeated = False  # flag for the room's monster
-        self.ally_appears = False # flag for the room's ally
+        self.number = number            # Door number
+        self.name = name                # Room title
+        self.depths = depths            # List of strings for each depth
+        self.opponents = []             # Monsters in the room
+        self.items = []                 # Items in the room
+        self.monster_defeated = False   # flag for the room's monster
+        self.ally_appears = False       # flag for the room's ally
 
     def describe(self, depth):
         if depth < len(self.depths):
