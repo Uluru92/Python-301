@@ -158,6 +158,41 @@ class Hero(Character):
             self.hp -= 15 # medium penalty
             print(f"You got paralized for a moment just by the Dragon staring at you, you lost 15 hp. Your actual HP: {self.hp}/{self.hp_max}")
 
+            if not self.current_room.monster_defeated:
+                while True:  # loop until valid input
+                    choice = input("A small golem appears from the shadows! Fight or run? (fight/run): ").strip().lower()
+                    if choice == "fight":
+                        # Create the monster
+                        dragon = Monster(
+                            name="Dragon Raid Boss",
+                            hp_max=120,
+                            hp=120,
+                            magic_resist=70,
+                            armor=90,
+                            strength=110,
+                            mana=70,
+                            agility=0,
+                            level=25,
+                            experience=0
+                        )
+                        
+                        hero_won = hero.fight(dragon)
+                        if hero_won:
+                            print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
+                            exit()  # stops the game
+                        else:
+                            print(f"The {dragon.name} defeated you...")
+                            self.hp -= 65  # big penalty
+                            self.current_room = None
+                            self.depth_in_room = 0
+
+                    elif choice == "run":
+                        print("You run back to the main room!")
+                        return  # exit the room
+
+                    else:
+                        print("Invalid choice. Please type 'fight' or 'run'.")
+
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
         # Calculate win probability based on attributes
@@ -184,10 +219,8 @@ class Hero(Character):
 
         # Determine fight outcome randomly based on probability
         if random.random() < win_probability:
-            print(f"You defeated the {monster.name}!")
             return True
         else:
-            print(f"The {monster.name} defeated you...")
             return False
 
     def go_deeper(self):
