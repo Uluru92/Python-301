@@ -135,8 +135,7 @@ class Hero(Character):
                         else:
                             print("The small golem defeated you! You retreat to the main room.")
                             self.hp -= 30  # small penalty
-                            self.current_room = None
-                            self.depth_in_room = 0
+                            self.depth_in_room = 10
                             return
 
                     elif choice == "run":
@@ -181,10 +180,10 @@ class Hero(Character):
                             print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
                             exit()  # stops the game
                         else:
-                            print(f"The {dragon.name} defeated you...")
                             self.hp -= 65  # big penalty
-                            self.current_room = None
-                            self.depth_in_room = 0
+                            print(f"The {dragon.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
+                            self.depth_in_room = 10
+                            return  # exit the room
 
                     elif choice == "run":
                         print("You run back to the main room!")
