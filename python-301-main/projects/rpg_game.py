@@ -128,6 +128,7 @@ class Hero(Character):
                         else:
                             self.hp -= 25  # big penalty
                             print(f"The {small_golem.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
+                            self.check_die()
                             self.depth_in_room = 10
                             if self.hp <= 0:
                                 if self.blessed == True:
@@ -150,33 +151,23 @@ class Hero(Character):
         if self.current_room.number == 2 and self.depth_in_room == 0:
             self.hp -= 5 # small penalty
             print(f"It's hard to breath here, you lost 5 hp. Your actual HP: {self.hp}/{self.hp_max}")
+            self.check_die()
         # Room 2, depth 2 (index 1) You feel the heat intensify, you lose hp just by entering this place
         if self.current_room.number == 2 and self.depth_in_room == 1:
             self.hp -= 10 # medium penalty
             print(f"There are flames everywhere, you lost 10 hp. Your actual HP: {self.hp}/{self.hp_max}")
+            self.check_die()
         # Room 2, depth 3 (index 2) Dragon apprears!
         if self.current_room.number == 2 and self.depth_in_room == 2:
             self.hp -= 15 # medium penalty
             print(f"You got paralized for a moment just by the Dragon staring at you, you lost 15 hp. Your actual HP: {self.hp}/{self.hp_max}")
-
+            self.check_die()
             if not self.current_room.monster_defeated:
-                while True:  # loop until valid input
+                while True: 
                     choice = input("The Dragon Raid Boss appears from the flames! Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
-                        dragon = Monster(
-                            name="Dragon Raid Boss",
-                            hp_max=300,
-                            hp=300,
-                            magic_resist=115,
-                            armor=130,
-                            strength=180,
-                            mana=80,
-                            agility=30,
-                            level=25,
-                            experience=0
-                        )
-                        
+                        dragon = Monster(name="Dragon Raid Boss",hp_max=300,hp=300,magic_resist=115,armor=130,strength=180,mana=80,agility=30,level=25,experience=0)
                         hero_won = hero.fight(dragon)
                         if hero_won:
                             print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
@@ -184,22 +175,12 @@ class Hero(Character):
                         else:
                             self.hp -= 70  # big penalty
                             print(f"The {dragon.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
+                            self.check_die()
                             self.depth_in_room = 10
-                            if self.hp <= 0:
-                                if self.blessed == True:
-                                    self.hp = 50
-                                    self.hp_max = 100
-                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
-                                    return
-                                else:
-                                    print("You lost the game!")
-                                    exit()  # stops the game
                             return  # exit the room
-
                     elif choice == "run":
                         print("You run back to the main room!")
                         return  # exit the room
-
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")
         # Room 3, depth 1 (index 0) Priest appears!
@@ -275,18 +256,7 @@ class Hero(Character):
                     choice = input("A Skeleton forms from the floor bones! Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
-                        skeleton = Monster(
-                            name="Skeleton",
-                            hp_max=120,
-                            hp=120,
-                            magic_resist=35,
-                            armor=35,
-                            strength=60,
-                            mana=0,
-                            agility=0,
-                            level=3,
-                            experience=0
-                        )
+                        skeleton = Monster(name="Skeleton",hp_max=120,hp=120,magic_resist=35,armor=35,strength=60,mana=0,agility=0,level=3,experience=0)
                         hero_won = hero.fight(skeleton)
                         if hero_won:
                             print("You defeated the Skeleton!")
@@ -307,16 +277,8 @@ class Hero(Character):
                         else:
                             self.hp -= 55  # medium penalty
                             print(f"The {skeleton.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
+                            self.check_die()
                             self.depth_in_room = 10
-                            if self.hp <= 0:
-                                if self.blessed == True:
-                                    self.hp = 50
-                                    self.hp_max = 100
-                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
-                                    return
-                                else:
-                                    print("You lost the game!")
-                                    exit()  # stops the game
                             return  # exit the room
                     elif choice == "run":
                         print("You run back to the main room!")
@@ -325,10 +287,13 @@ class Hero(Character):
                         print("Invalid choice. Please type 'fight' or 'run'.")   
         # Room 5, depth 1 (index 0) Random room - you get teleported to anyother...!
         if self.current_room.number == 5 and self.depth_in_room == 0:
-            random_room = random.choice(rooms[:4]) # select a random room from list rooms
+            random_room = random.choice(rooms[:4])  # pick a random room (1-4)
+            print(f"\n***...The room shifts! You are teleported to another place...***")
             self.current_room = random_room
-            hero.enter_room(random_room)
-
+            self.depth_in_room = 0
+            print(f"\nNow you are inside the {random_room.name}")
+            print(random_room.describe(self.depth_in_room))
+            return
 
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
@@ -337,7 +302,7 @@ class Hero(Character):
             self.strength * 0.3 +
             self.agility * 0.2 +
             self.mana * 0.1 +
-            self.hp_max * 0.2 +
+            self.hp * 0.2 +
             self.armor * 0.1 +
             self.magic_resist * 0.1
         )
@@ -359,6 +324,17 @@ class Hero(Character):
             return True
         else:
             return False
+
+    def check_die (self):
+        if self.hp <= 0:
+            if self.blessed == True:
+                self.hp = 50
+                self.hp_max = 100
+                print(f"{self.name}, you were revived by the bless of the Gods with {self.hp}/{self.hp_max} HP")
+                return
+            else:
+                print("You lost the game!")
+                exit()  # stops the game
 
     def go_deeper(self):
         if self.current_room and self.depth_in_room + 1 < len(self.current_room.depths):
