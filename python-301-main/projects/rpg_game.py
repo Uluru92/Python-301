@@ -90,7 +90,7 @@ class Hero(Character):
                     print(f"You picked up the Sword! Your strength increased! to {self.strength} points")
                 else:
                     print("You leave the sword where it is.")
-        # Room 1, depth 3 (index 2) has a monster (small golem)
+        # Room 1, depth 3 (index 2) Small Golem!
         if self.current_room.number == 1 and self.depth_in_room == 2:
             if not self.current_room.monster_defeated:
                 while True:  # loop until valid input
@@ -120,7 +120,7 @@ class Hero(Character):
                             self.strength += 2
                             self.agility += 2
                             self.armor += 1  # gloves
-                            print("You gained 10 EXP, +5 Max HP, +2 Strength, +2 Agility, +1 Armor (gloves)")
+                            print(f"You gained 60 EXP, +5 Max HP, +2 Strength, +2 Agility, +1 Armor (gloves). New stats: \n{hero}")
                             # potion added to inventory
                             self.inventory.append("HP Potion")
                             print("You found a HP Potion!")
@@ -166,8 +166,8 @@ class Hero(Character):
                         # Create the monster
                         dragon = Monster(
                             name="Dragon Raid Boss",
-                            hp_max=200,
-                            hp=2000,
+                            hp_max=300,
+                            hp=300,
                             magic_resist=115,
                             armor=130,
                             strength=180,
@@ -252,6 +252,77 @@ class Hero(Character):
                     print(f"You picked up the Wizzard Hat! Your magic resist increased to {self.magic_resist} points!")
                 else:
                     print("You leave the Mana Potion where it is.") 
+        # Room 4, depth 2 (index 1) Nothing here!
+        if self.current_room.number == 4 and self.depth_in_room == 1:
+            if "Chain Armor" not in self.inventory:
+                while True:  
+                    choice = input("You see a chain armor on the floor. Pick it up? (y/n): ").strip().lower()
+                    if choice in ["y", "n"]:
+                        break
+                    print("Invalid choice. Please type 'y' or 'n'.")
+
+                if choice == "y":
+                    self.inventory.append("Chain Armor")
+                    self.strength += 30  # Or whatever amount you want to increase
+                    self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                    print(f"You picked up the Chain Armor! Your Armor increased! to {self.armor} points")
+                else:
+                    print("You leave the chain armor where it is.")
+        # Room 4, depth 3 (index 2) Skeleton monster!
+        if self.current_room.number == 4 and self.depth_in_room == 2:
+            if not self.current_room.monster_defeated:
+                while True:
+                    choice = input("A Skeleton forms from the floor bones! Fight or run? (fight/run): ").strip().lower()
+                    if choice == "fight":
+                        # Create the monster
+                        skeleton = Monster(
+                            name="Skeleton",
+                            hp_max=120,
+                            hp=120,
+                            magic_resist=35,
+                            armor=35,
+                            strength=60,
+                            mana=0,
+                            agility=0,
+                            level=3,
+                            experience=0
+                        )
+                        hero_won = hero.fight(skeleton)
+                        if hero_won:
+                            print("You defeated the Skeleton!")
+                            self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                            self.current_room.monster_defeated = True
+                            # rewards
+                            self.gain_experience(90)
+                            self.hp_max += 15
+                            self.hp += 15
+                            self.strength += 8
+                            self.agility += 7
+                            self.armor += 12
+                            print(f"You gained 90 EXP, +15 Max HP, +8 Strength, +7 Agility, +12 Armor (gloves). New stats:\n{hero}")
+                            # potion added to inventory
+                            self.inventory.append("HP Potion")
+                            print("You got an HP Potion! You can drinnk it to restore +30 health points")
+                            return
+                        else:
+                            self.hp -= 55  # medium penalty
+                            print(f"The {skeleton.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
+                            self.depth_in_room = 10
+                            if self.hp <= 0:
+                                if self.blessed == True:
+                                    self.hp = 50
+                                    self.hp_max = 100
+                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
+                                    return
+                                else:
+                                    print("You lost the game!")
+                                    exit()  # stops the game
+                            return  # exit the room
+                    elif choice == "run":
+                        print("You run back to the main room!")
+                        return  # exit the room
+                    else:
+                        print("Invalid choice. Please type 'fight' or 'run'.")   
 
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
