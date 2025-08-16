@@ -323,9 +323,12 @@ class Hero(Character):
                         return  # exit the room
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")   
-        # Room 5, depth 1 (index 0)
+        # Room 5, depth 1 (index 0) Random room - you get teleported to anyother...!
         if self.current_room.number == 5 and self.depth_in_room == 0:
-            
+            random_room = random.choice(rooms[:4]) # select a random room from list rooms
+            self.current_room = random_room
+            hero.enter_room(random_room)
+
 
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
