@@ -323,6 +323,9 @@ class Hero(Character):
                         return  # exit the room
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")   
+        # Room 5, depth 1 (index 0)
+        if self.current_room.number == 5 and self.depth_in_room == 0:
+            
 
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
