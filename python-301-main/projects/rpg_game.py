@@ -164,10 +164,12 @@ class Hero(Character):
             self.check_die()
             if not self.current_room.monster_defeated:
                 while True: 
-                    choice = input("The Dragon Raid Boss appears from the flames! Fight or run? (fight/run): ").strip().lower()
+                    print("The Dragon Raid Boss appears from the flames!")
+                    dragon = Monster(name="Dragon Raid Boss",hp_max=300,hp=300,magic_resist=115,armor=130,strength=180,mana=80,agility=30,level=25,experience=0)
+                    self.prob_to_win(dragon)
+                    choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
-                        dragon = Monster(name="Dragon Raid Boss",hp_max=300,hp=300,magic_resist=115,armor=130,strength=180,mana=80,agility=30,level=25,experience=0)
                         hero_won = hero.fight(dragon)
                         if hero_won:
                             print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
@@ -253,10 +255,12 @@ class Hero(Character):
         if self.current_room.number == 4 and self.depth_in_room == 2:
             if not self.current_room.monster_defeated:
                 while True:
-                    choice = input("A Skeleton forms from the floor bones! Fight or run? (fight/run): ").strip().lower()
+                    print("A Skeleton forms from the floor bones!")
+                    skeleton = Monster(name="Skeleton",hp_max=120,hp=120,magic_resist=35,armor=35,strength=60,mana=0,agility=0,level=3,experience=0)
+                    self.prob_to_win(skeleton)
+                    choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
-                        skeleton = Monster(name="Skeleton",hp_max=120,hp=120,magic_resist=35,armor=35,strength=60,mana=0,agility=0,level=3,experience=0)
                         hero_won = hero.fight(skeleton)
                         if hero_won:
                             print("You defeated the Skeleton!")
@@ -295,31 +299,19 @@ class Hero(Character):
             print(random_room.describe(self.depth_in_room))
             return
 
-    def fight(self, monster: Monster) -> bool:
-        """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
+    def prob_to_win(self, monster: Monster):
+        '''Calculate and show the probability to win agains the monster in front of you'''
         # Calculate win probability based on attributes
-        hero_score = (
-            self.strength * 0.3 +
-            self.agility * 0.2 +
-            self.mana * 0.1 +
-            self.hp * 0.2 +
-            self.armor * 0.1 +
-            self.magic_resist * 0.1
-        )
-        monster_score = (
-            monster.strength * 0.3 +
-            monster.agility * 0.2 +
-            monster.mana * 0.1 +
-            monster.hp_max * 0.2 +
-            monster.armor * 0.1 +
-            monster.magic_resist * 0.1
-        )
-
+        hero_score = (self.strength*0.3+self.agility*0.2+self.mana*0.1+self.hp*0.2+self.armor*0.1+self.magic_resist*0.1)
+        monster_score = (monster.strength*0.3+monster.agility*0.2+monster.mana*0.1+monster.hp_max*0.2+monster.armor*0.1+monster.magic_resist*0.1)
         # Calculate probability of winning
         win_probability = hero_score / (hero_score + monster_score)
-        print(f"Chance to win against {monster.name}: {round(win_probability * 100)}%")
+        print(f"Chances to win against {monster.name}: {round(win_probability * 100)}%")
+        return win_probability
 
-        # Determine fight outcome randomly based on probability
+    def fight(self, monster: Monster) -> bool:
+        """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
+        win_probability = self.prob_to_win(self, monster)
         if random.random() < win_probability:
             return True
         else:
