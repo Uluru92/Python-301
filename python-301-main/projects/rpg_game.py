@@ -65,12 +65,13 @@ class Hero(Character):
         while self.experience >= 100:
             self.experience -= 100
             self.level += 1
-            self.hp_max += 10  # optional: increase stats on level up
-            self.hp = self.hp_max
-            self.strength += 2
-            self.agility += 2
-            self.armor += 1
+            self.hp_max += 70
+            self.hp = self.hp_max # this way the Hero restores its HP to full max HP
+            self.strength += 85
+            self.agility += 85
+            self.armor += 85
             print(f"🎉 Level up! You are now Level {self.level}!")
+            print(hero)
     
     def check_special_event(self):
         # Room 1, depth 2 (index 1) Sword!
@@ -84,7 +85,7 @@ class Hero(Character):
 
                 if choice == "y":
                     self.inventory.append("Sword")
-                    self.strength += 35  # Or whatever amount you want to increase
+                    self.strength += 105  # Or whatever amount you want to increase
                     self.current_room.depths[self.depth_in_room] = "There is nothing else here."
                     self.current_room.depths[self.depth_in_room-1] = "There is nothing else here."
                     print(f"You picked up the Sword! Your strength increased! to {self.strength} points")
@@ -95,8 +96,8 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True:
                     print("A small golem appears from the shadows! ")
-                    small_golem = Monster(name="Small Golem",hp_max=60,hp=60,magic_resist=15,armor=25,strength=20,mana=0,agility=2,level=1,experience=0)
-                    self.prob_to_win(small_golem)
+                    small_golem = Monster(name="Small Golem",hp_max=60,hp=60,magic_resist=15,armor=5,strength=5,mana=5,agility=0,level=1,experience=0)
+                    print(f"Chances to win against {small_golem.name}: {round(hero.prob_to_win(small_golem)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         hero_won = hero.fight(small_golem)
@@ -106,14 +107,13 @@ class Hero(Character):
                             self.current_room.monster_defeated = True
                             # rewards
                             self.gain_experience(60)
-                            self.hp_max += 5
-                            self.strength += 2
-                            self.agility += 2
-                            self.armor += 1  # gloves
-                            print(f"You gained 60 EXP, +5 Max HP, +2 Strength, +2 Agility, +1 Armor (gloves). New stats: \n{hero}")
-                            # potion added to inventory
-                            self.inventory.append("HP Potion")
-                            print("You found a HP Potion!")
+                            self.hp += 45
+                            self.hp_max += 45
+                            self.strength += 45
+                            self.agility += 45
+                            self.magic_resist += 45
+                            self.armor += 45
+                            print(f"You gained 60 EXP, +45 HP, +45 Max HP, +45 Strength, +45 Agility, +45 Armor, +45 Magic Resist. New stats: \n{hero}")
                             return
                         else:
                             self.hp -= 25  # big penalty
@@ -146,8 +146,8 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True: 
                     print("The Dragon Raid Boss appears from the flames!")
-                    dragon = Monster(name="Dragon Raid Boss",hp_max=300,hp=300,magic_resist=115,armor=130,strength=180,mana=80,agility=30,level=25,experience=0)
-                    self.prob_to_win(dragon)
+                    dragon = Monster(name="Dragon Raid Boss",hp_max=250,hp=250,magic_resist=65,armor=85,strength=70,mana=70,agility=40,level=5,experience=0)
+                    print(f"Chances to win against {dragon.name}: {round(hero.prob_to_win(dragon)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
@@ -195,7 +195,7 @@ class Hero(Character):
 
                 if choice == "y":
                     self.inventory.append("Mana Potion")
-                    self.mana += 23
+                    self.mana += 85
                     self.current_room.depths[self.depth_in_room] = "There is nothing else here."
                     print(f"You picked up the Mana Potion! Your mana increased to {self.mana} points!")
                 else:
@@ -211,12 +211,12 @@ class Hero(Character):
 
                 if choice == "y":
                     self.inventory.append("Wizzard Hat")
-                    self.magic_resist += 18
+                    self.magic_resist += 95
                     self.current_room.depths[self.depth_in_room] = "There is nothing else here."
                     print(f"You picked up the Wizzard Hat! Your magic resist increased to {self.magic_resist} points!")
                 else:
                     print("You leave the Mana Potion where it is.") 
-        # Room 4, depth 2 (index 1) Nothing here!
+        # Room 4, depth 2 (index 1) Chain Armor!
         if self.current_room.number == 4 and self.depth_in_room == 1:
             if "Chain Armor" not in self.inventory:
                 while True:  
@@ -227,7 +227,7 @@ class Hero(Character):
 
                 if choice == "y":
                     self.inventory.append("Chain Armor")
-                    self.strength += 30  # Or whatever amount you want to increase
+                    self.armor += 90
                     self.current_room.depths[self.depth_in_room] = "There is nothing else here."
                     print(f"You picked up the Chain Armor! Your Armor increased! to {self.armor} points")
                 else:
@@ -237,8 +237,8 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True:
                     print("A Skeleton forms from the floor bones!")
-                    skeleton = Monster(name="Skeleton",hp_max=120,hp=120,magic_resist=35,armor=35,strength=60,mana=0,agility=0,level=3,experience=0)
-                    self.prob_to_win(skeleton)
+                    skeleton = Monster(name="Skeleton",hp_max=80,hp=80,magic_resist=25,armor=25,strength=40,mana=5,agility=15,level=3,experience=0)
+                    print(f"Chances to win against {skeleton.name}: {round(hero.prob_to_win(skeleton)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
                         # Create the monster
@@ -249,15 +249,13 @@ class Hero(Character):
                             self.current_room.monster_defeated = True
                             # rewards
                             self.gain_experience(90)
-                            self.hp_max += 15
-                            self.hp += 15
-                            self.strength += 8
-                            self.agility += 7
-                            self.armor += 12
-                            print(f"You gained 90 EXP, +15 Max HP, +8 Strength, +7 Agility, +12 Armor (gloves). New stats:\n{hero}")
-                            # potion added to inventory
-                            self.inventory.append("HP Potion")
-                            print("You got an HP Potion! You can drinnk it to restore +30 health points")
+                            self.hp_max += 65
+                            self.hp += 65
+                            self.magic_resist += 65
+                            self.strength += 65
+                            self.agility += 65
+                            self.armor += 65
+                            print(f"You gained 90 EXP, +65 HP, +65 Max HP, 65 Strength, +65 Agility, +65 Armor, +65 Magic Resist. New stats:\n{hero}")
                             return
                         else:
                             self.hp -= 55  # medium penalty
@@ -283,16 +281,15 @@ class Hero(Character):
     def prob_to_win(self, monster: Monster):
         '''Calculate and show the probability to win agains the monster in front of you'''
         # Calculate win probability based on attributes
-        hero_score = (self.strength*0.3+self.agility*0.2+self.mana*0.1+self.hp*0.2+self.armor*0.1+self.magic_resist*0.1)
-        monster_score = (monster.strength*0.3+monster.agility*0.2+monster.mana*0.1+monster.hp_max*0.2+monster.armor*0.1+monster.magic_resist*0.1)
+        hero_score = (self.strength*0.2+self.agility*0.15+self.mana*0.15+self.hp*0.3+self.armor*0.1+self.magic_resist*0.1)
+        monster_score = (monster.strength*0.2+monster.agility*0.15+monster.mana*0.15+monster.hp*0.3+monster.armor*0.1+monster.magic_resist*0.1)
         # Calculate probability of winning
         win_probability = hero_score / (hero_score + monster_score)
-        print(f"Chances to win against {monster.name}: {round(win_probability * 100)}%")
         return win_probability
 
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
-        win_probability = self.prob_to_win(self, monster)
+        win_probability = self.prob_to_win(monster)
         if random.random() < win_probability:
             return True
         else:
