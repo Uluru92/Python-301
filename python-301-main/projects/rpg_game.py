@@ -93,22 +93,12 @@ class Hero(Character):
         # Room 1, depth 3 (index 2) Small Golem!
         if self.current_room.number == 1 and self.depth_in_room == 2:
             if not self.current_room.monster_defeated:
-                while True:  # loop until valid input
-                    choice = input("A small golem appears from the shadows! Fight or run? (fight/run): ").strip().lower()
+                while True:
+                    print("A small golem appears from the shadows! ")
+                    small_golem = Monster(name="Small Golem",hp_max=60,hp=60,magic_resist=15,armor=25,strength=20,mana=0,agility=2,level=1,experience=0)
+                    self.prob_to_win(small_golem)
+                    choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
-                        # Create the monster
-                        small_golem = Monster(
-                            name="Small Golem",
-                            hp_max=60,
-                            hp=60,
-                            magic_resist=15,
-                            armor=25,
-                            strength=20,
-                            mana=0,
-                            agility=2,
-                            level=1,
-                            experience=0
-                        )
                         hero_won = hero.fight(small_golem)
                         if hero_won:
                             print("You defeated the small golem!")
@@ -130,15 +120,6 @@ class Hero(Character):
                             print(f"The {small_golem.name} defeated you... You ended up with {self.hp}/{self.hp_max} HP")
                             self.check_die()
                             self.depth_in_room = 10
-                            if self.hp <= 0:
-                                if self.blessed == True:
-                                    self.hp = 50
-                                    self.hp_max = 100
-                                    print(f"{self.name}, you were revive by the bless of the Gods with {self.hp}/{self.hp_max} HP")
-                                    return
-                                else:
-                                    print("You lost the game!")
-                                    exit()  # stops the game
                             return  # exit the room
 
                     elif choice == "run":
