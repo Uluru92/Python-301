@@ -73,7 +73,7 @@ class Hero(Character):
             print(f"🎉 Level up! You are now Level {self.level}!")
     
     def check_special_event(self):
-        # Room 1, depth 2 (index 1) has a sword
+        # Room 1, depth 2 (index 1) Sword!
         if self.current_room.number == 1 and self.depth_in_room == 1:
             if "Sword" not in self.inventory:
                 while True:  # Loop until valid input
@@ -86,11 +86,11 @@ class Hero(Character):
                     self.inventory.append("Sword")
                     self.strength += 35  # Or whatever amount you want to increase
                     self.current_room.depths[self.depth_in_room] = "There is nothing else here."
-                    self.current_room.depths[self.depth_in_room-1] = "There is nothing here."
-                    print("You picked up the Sword! Your strength increased!")
+                    self.current_room.depths[self.depth_in_room-1] = "There is nothing else here."
+                    print(f"You picked up the Sword! Your strength increased! to {self.strength} points")
                 else:
                     print("You leave the sword where it is.")
-        # Room 1, depth 3 (index 2) has a mosnter (small golem)
+        # Room 1, depth 3 (index 2) has a monster (small golem)
         if self.current_room.number == 1 and self.depth_in_room == 2:
             if not self.current_room.monster_defeated:
                 while True:  # loop until valid input
@@ -208,19 +208,51 @@ class Hero(Character):
                 while True:
                     choice = input("If you kneel, you receive the blessing of the Gods! knee or stand? (kneel/stand): ").strip().lower()
                     if choice == "kneel":
-                        self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                        self.current_room.depths[self.depth_in_room] = "There is nothing here... seems like the priest left"
                         self.current_room.ally_appears = True
                         self.blessed = True
                         print(f"{self.name} was blessed with the power of resurrection! You can come from Death once!")
                         return
                     elif choice == "stand":
-                        self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                        self.current_room.depths[self.depth_in_room] = "There is nothing here... seems like the priest left"
                         self.current_room.ally_appears = True
                         print(f"{self.name}, you rejected the bless of the Gods... Good luck! *Priest desappears*")
                         return
                     else:
                         print("Invalid choice. Please type 'fight' or 'run'.")
-                                  
+        # Room 3, depth 2 (index 1) Mana Potion!
+        if self.current_room.number == 3 and self.depth_in_room == 1:
+            if "Mana Potion" not in self.inventory:
+                while True:
+                    choice = input("You found a Mana Potion! Pick it up? (y/n): ").strip().lower()
+                    if choice in ["y", "n"]:
+                        break
+                    print("Invalid choice. Please type 'y' or 'n'.")
+
+                if choice == "y":
+                    self.inventory.append("Mana Potion")
+                    self.mana += 23
+                    self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                    print(f"You picked up the Mana Potion! Your mana increased to {self.mana} points!")
+                else:
+                    print("You leave the Mana Potion where it is.") 
+        # Room 3, depth 3 (index 2) Wizzard Hat
+        if self.current_room.number == 3 and self.depth_in_room == 2:
+            if "Wizzard Hat" not in self.inventory:
+                while True:
+                    choice = input("You found a Wizzard Hat! Pick it up? (y/n): ").strip().lower()
+                    if choice in ["y", "n"]:
+                        break
+                    print("Invalid choice. Please type 'y' or 'n'.")
+
+                if choice == "y":
+                    self.inventory.append("Wizzard Hat")
+                    self.magic_resist += 18
+                    self.current_room.depths[self.depth_in_room] = "There is nothing else here."
+                    print(f"You picked up the Wizzard Hat! Your magic resist increased to {self.magic_resist} points!")
+                else:
+                    print("You leave the Mana Potion where it is.") 
+
     def fight(self, monster: Monster) -> bool:
         """Generic fight against any Monster. Returns True if hero wins, False if hero loses."""
         # Calculate win probability based on attributes
