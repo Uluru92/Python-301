@@ -41,3 +41,13 @@ print("\nNow lets use a built in function: reversed:\n")
 
 for char in reversed("Jorddy"):
     print(char)
+
+print("\nNow lets use a GENERATOR:\n")
+
+def ReverseGenerater(data):
+    for i in range(len(data)-1,-1,-1):
+        yield data[i] # if we use return instead of yield... it will capture the last char and returns in that moment... that's the key in using yield, that it will go thorugh all the chars and then return the whole
+
+for i in ReverseGenerater("Jorddy"):
+    print(i)
+
