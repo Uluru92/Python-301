@@ -1,4 +1,4 @@
-class NotReverse():
+class NotReverse:
     def __init__(self,data):
         self.data = data
         self.index = 0
@@ -19,7 +19,7 @@ for char in Jorddy: # iter & next... makes the objet iterable...
 
 print("\nNow lets make it Reverse:\n")
 
-class Reverse():
+class Reverse:
     def __init__(self,data):
         self.data = data
         self.index = len(data)
@@ -34,5 +34,10 @@ class Reverse():
         return self.data[self.index]
 
 Jorddy = Reverse("Jorddy") # Make a class Reverse called Jorddy
-for char in Jorddy: # iter & next... makes the objet iterable... the thing is we modidy this methods to go throught in reverse
+for char in Jorddy: # iter & next... makes the objet iterable and its own iterator... the thing is we modidy this methods to go throught in reverse
+    print(char)
+
+print("\nNow lets use a built in function: reversed:\n")
+
+for char in reversed("Jorddy"):
     print(char)
