@@ -24,28 +24,37 @@ class Spice(Ingredient):
 
     def expire(self):
         """Expires the ingredient item."""
-        print(f"Oh no! these {self.name} got expired...")
-        self.name = "expired " + self.name
+        if self.name == "salt":
+            print(f"{self.name} never expires! ask the sea!")
+        else:
+            print(f"{self.name} is expired! you better throw it!")
+            self.name = "expired " + self.name
 
     def grind(self):
         print(f"You have now {self.amount} of ground {self.name}.")
 
     def eat_half(self):
-        print(f"You have an amount of {self.amount}... you are about to eat half...")
+        print(f"You have an amount of {self.amount} {self.name}... you are about to eat half...")
         self.amount = self.amount/2
-        print(f"YOU ATE HALF! Now you have an amount of {self.amount}... ")
+        print(f"YOU ATE HALF the amount of {self.name}! Now you have an amount of {self.amount} {self.name}... ")
         
 
-p = Ingredient('peas', 12)
-s = Spice('Spice salt', 200)
+peas = Ingredient('peas', 12)
+pepper = Spice('pepper', 200)
+salt = Spice("salt", 450)
 
-p.expire()
-print(p)
-s.expire()
-print(s)
+peas.expire()
+pepper.expire()
+salt.expire()
 
-pepper = Spice("Spice pepper", 123)
+print(peas)
+print(pepper)
+print(salt)
+
 pepper.grind()
 pepper.eat_half()
 
-p.grind() # we cannot use the method .eat_half() because this method is from the child class, not the parent class Ingredient ;]
+#p.grind() # we cannot use the method .eat_half() because this method is from the child class, not the parent class Ingredient ;]
+
+class vegetable(Ingredient):
+    """Models a vegetable to your food."""
