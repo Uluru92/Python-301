@@ -40,4 +40,16 @@ pepper.grind()
 # p.grind() ----> # OUTPUT: AttributeError: 'Ingredient' object has no attribute 'grind'
 
 pepper.eat_half()
-p.grind() # we cannot use the method .eat_half() because this method is from the child class, not the parent class Ingredient ;]
+#p.grind() # we cannot use the method .eat_half() because this method is from the child class, not the parent class Ingredient ;]
+
+class Vegetable(Ingredient):
+    def __init__(self, name, amount, color):
+        super().__init__(name, amount)
+        self.color = color
+
+    def check_color(self):
+        print(f"The {self.name} is color {self.color}")
+
+# Add a second child class if you haven't yet. What else do you need for cooking that could be a child class of either of the two existing classes?
+cucumber = Vegetable("cucumber",10, "green")
+cucumber.check_color()

@@ -60,10 +60,6 @@ pepper.eat_half()
 
 #p.grind() # we cannot use the method .eat_half() because this method is from the child class, not the parent class Ingredient ;]
 
-class vegetable(Ingredient):
-    """Models a vegetable to your food."""
-
-
 # Task 
 # Try to instantiate a Spice() object without passing a third argument. What happens? 
 #   Anwser: TypeError: Spice.__init__() missing 1 required positional argument: 'taste'
@@ -73,3 +69,15 @@ class vegetable(Ingredient):
 print(f"The taste of our ingredient peppers is: {pepper.taste}")
 #Try to access .taste on your Ingredient() object. What error message do you get?
 #   Answer: AttributeError: 'Ingredient' object has no attribute 'taste'
+
+# Add a second child class if you haven't yet. What else do you need for cooking that could be a child class of either of the two existing classes?
+class Vegetable(Ingredient):
+    def __init__(self, name, amount, color):
+        super().__init__(name, amount)
+        self.color = color
+
+    def check_color(self):
+        print(f"The {self.name} is color {self.color}")
+
+cucumber = Vegetable("cucumber",10, "green")
+cucumber.check_color()
