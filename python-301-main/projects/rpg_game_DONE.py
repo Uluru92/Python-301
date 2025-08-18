@@ -23,7 +23,32 @@ class Character:
         self.experience = experience
 
 class Monster(Character):
-    pass
+    pass    
+
+class WeakOpponent(Monster):
+    def attack(monster, hero):
+        print(f"{hero.name} watch out! {monster.name} is about to attack you!")
+        damage = hero.armor - monster.strength
+        if damage > 0:
+            print(f"{hero.name} has avoid the initial damage! Keep going, it's your turn to attack!")
+        else:
+            hero.hp += hero.hp + damage
+            print(f"{hero.name} has taken {damage} damage points. Resulting with {hero.hp}/{hero.hp_max} HP.")
+            hero.check_die()
+
+class FinalBoss(Monster):
+    def __init__(self, name, hp_max, hp, magic_resist, armor, strength, mana, agility, level, experience,Special_dmg):
+        super().__init__(name, hp_max, hp, magic_resist, armor, strength, mana, agility, level, experience)
+        self.Special_dmg = Special_dmg
+    def attack(monster, hero):
+        print(f"{hero.name} you are about to receive the a massive attack from {monster.name}")
+        damage = hero.armor - monster.strength + hero.magic_resist - monster.mana - monster.Special_dmg
+        if damage > 0:
+            print(f"{hero.name} has avoid the initial damage!!! Nice move! Now focus on the fight, good luck!")
+        else:
+            hero.hp += hero.hp + damage
+            print(f"{hero.name} has taken {damage} damage points. Resulting with {hero.hp}/{hero.hp_max} HP.")
+            hero.check_die()
 
 class Hero(Character):
     def __init__(self, name, hp_max, hp, magic_resist, armor, strength, mana, agility, level, experience):
@@ -70,7 +95,7 @@ class Hero(Character):
             self.strength += 85
             self.agility += 85
             self.armor += 85
-            print(f"🎉 Level up! You are now Level {self.level}!")
+            print(f"🎉 Level up! You are now Level {self.level} and gained new stats:")
             print(hero)
     
     def check_special_event(self):
@@ -96,10 +121,11 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True:
                     print("A small golem appears from the shadows! ")
-                    small_golem = Monster(name="Small Golem",hp_max=60,hp=60,magic_resist=15,armor=5,strength=5,mana=5,agility=0,level=1,experience=0)
+                    small_golem = WeakOpponent(name="Small Golem",hp_max=60,hp=60,magic_resist=15,armor=5,strength=5,mana=5,agility=0,level=1,experience=0)
                     print(f"Chances to win against {small_golem.name}: {round(hero.prob_to_win(small_golem)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
+                        small_golem.attack(hero)
                         hero_won = hero.fight(small_golem)
                         if hero_won:
                             print("You defeated the small golem!")
@@ -146,11 +172,11 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True: 
                     print("The Dragon Raid Boss appears from the flames!")
-                    dragon = Monster(name="Dragon Raid Boss",hp_max=250,hp=250,magic_resist=65,armor=85,strength=70,mana=70,agility=40,level=5,experience=0)
+                    dragon = FinalBoss(name="Dragon Raid Boss",hp_max=250,hp=250,magic_resist=65,armor=85,strength=70,mana=70,agility=40,level=5,experience=0,Special_dmg=65)
                     print(f"Chances to win against {dragon.name}: {round(hero.prob_to_win(dragon)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
-                        # Create the monster
+                        dragon.attack(hero)
                         hero_won = hero.fight(dragon)
                         if hero_won:
                             print("🎉 Congratulations! You defeated the Dragon and finished the game! 🎉")
@@ -237,11 +263,11 @@ class Hero(Character):
             if not self.current_room.monster_defeated:
                 while True:
                     print("A Skeleton forms from the floor bones!")
-                    skeleton = Monster(name="Skeleton",hp_max=80,hp=80,magic_resist=25,armor=25,strength=40,mana=5,agility=15,level=3,experience=0)
+                    skeleton = WeakOpponent(name="Skeleton",hp_max=80,hp=80,magic_resist=25,armor=25,strength=40,mana=5,agility=15,level=3,experience=0)
                     print(f"Chances to win against {skeleton.name}: {round(hero.prob_to_win(skeleton)*100)}%")
                     choice = input("Fight or run? (fight/run): ").strip().lower()
                     if choice == "fight":
-                        # Create the monster
+                        skeleton.attack(hero)
                         hero_won = hero.fight(skeleton)
                         if hero_won:
                             print("You defeated the Skeleton!")
@@ -255,7 +281,7 @@ class Hero(Character):
                             self.strength += 65
                             self.agility += 65
                             self.armor += 65
-                            print(f"You gained 90 EXP, +65 HP, +65 Max HP, 65 Strength, +65 Agility, +65 Armor, +65 Magic Resist. New stats:\n{hero}")
+                            print(f"From killing the {skeleton.name}, you gained +65 HP, +65 Max HP, 65 Strength, +65 Agility, +65 Armor, +65 Magic Resist. New stats:\n{hero}")
                             return
                         else:
                             self.hp -= 55  # medium penalty
@@ -324,12 +350,6 @@ class Hero(Character):
                 f"Level: {self.level}\n"
                 f"Experience: {self.experience}\n"
                 f"Inventory: {self.inventory}\n")
-
-class Ally(Character):
-    def __init__(self, name, level):
-        super().__init__(name, level)
-        self.resurrection_available = True # This is a superpower an ally has to protect the main character - The hero: player
-    pass
 
 class Room:
     def __init__(self, number, name, depths):
