@@ -1,10 +1,11 @@
 from Ingredients_project import Ingredient, Spice
 
 class Soup():
-    def __init__(self, name, Ingredient,Spice):
+    def __init__(self, name, Ingredient,Spice,*Extras):
         self.name = name
         self.Ingredient = Ingredient
         self.Spice = Spice
+        self.Extras = Extras
 
     def cook(self):
         print(f"Let's cook!")
@@ -13,6 +14,10 @@ class Soup():
             print (f" - {ingredient.name} ({ingredient.amount})")
         for spice in self.Spice:
             print (f" - {spice.name} ({spice.amount})")
+        if self.Extras:
+            print(f" - Extras:")
+            for extra in self.Extras:
+                print(f"    - {extra}")
         self.serves()
     
     def serves(self):
@@ -34,8 +39,7 @@ water = Ingredient("water", 3)
 avocado = Ingredient("avocado", 3)
 ingredients = [beans,water,avocado]
 
-
 # Lets create Hot Black Beans Soup
 if __name__ == "__main__":
-    beans_soup = Soup("Hot Black Beans Soup",ingredients,spices )
+    beans_soup = Soup("Hot Black Beans Soup",ingredients,spices,"Cheese", "Mushroom", "Pepperoni" )
     beans_soup.cook()
