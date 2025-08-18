@@ -1,7 +1,8 @@
 # Project RPG GAME! - Chapter 2:
 
-# Lets create some classes!
 import random
+
+# Lets create some classes!
 
 class Character:
     '''A base character... with this class, its born:
@@ -402,7 +403,6 @@ print("Welcome, adventurer!")
 print("You stand before five mysterious doors.")
 print("What awaits behind them? Only you will find out…")
 print("Choose wisely, or fate may choose for you.\n")
-
 
 while hero.hp != 0:
     hero.current_room = select_door()
