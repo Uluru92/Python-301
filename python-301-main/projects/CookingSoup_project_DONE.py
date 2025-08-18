@@ -15,7 +15,7 @@ class Soup():
         for spice in self.Spice:
             print (f" - {spice.name} ({spice.amount})")
         if self.Extras:
-            print(f" - Extras:")
+            print(f" - Extra toppings:")
             for extra in self.Extras:
                 print(f"    - {extra}")
         self.serves()
