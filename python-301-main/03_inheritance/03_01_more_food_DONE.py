@@ -21,6 +21,9 @@ class Ingredient:
 
 class Spice(Ingredient):
     """Models a spice to flavor your food."""
+    def __init__(self, name, amount, taste):
+        super().__init__(name, amount)
+        self.taste = taste
 
     def expire(self):
         """Expires the ingredient item."""
@@ -37,11 +40,12 @@ class Spice(Ingredient):
         print(f"You have an amount of {self.amount} {self.name}... you are about to eat half...")
         self.amount = self.amount/2
         print(f"YOU ATE HALF the amount of {self.name}! Now you have an amount of {self.amount} {self.name}... ")
-        
+    
+
 
 peas = Ingredient('peas', 12)
-pepper = Spice('pepper', 200)
-salt = Spice("salt", 450)
+pepper = Spice('pepper', 200, "super hot")
+salt = Spice("salt", 450,"Regular taste")
 
 peas.expire()
 pepper.expire()
@@ -58,3 +62,14 @@ pepper.eat_half()
 
 class vegetable(Ingredient):
     """Models a vegetable to your food."""
+
+
+# Task 
+# Try to instantiate a Spice() object without passing a third argument. What happens? 
+#   Anwser: TypeError: Spice.__init__() missing 1 required positional argument: 'taste'
+# Try to instantiate an Ingredient() object with a third argument. What error message does Python show you? 
+#   Answer: TypeError: Ingredient.__init__() takes 3 positional arguments but 4 were given
+# Confirm that you can access .taste on your Spice() object.
+print(f"The taste of our ingredient peppers is: {pepper.taste}")
+#Try to access .taste on your Ingredient() object. What error message do you get?
+#   Answer: AttributeError: 'Ingredient' object has no attribute 'taste'
