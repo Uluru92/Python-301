@@ -12,9 +12,10 @@ class Card():
     
 class Gambler():
     '''BlackJack player'''
-    def __init__(self,name,cards_in_hand):
+    def __init__(self,name,cards_in_hand,currently_sum):
         self.name = name
         self.cards_in_hand = cards_in_hand
+        self.currently_sum = currently_sum
     def pick_card(self,card):
         cards.append(card)
     def get_initial_cards(self):
@@ -40,8 +41,12 @@ class Gambler():
             else:
                 value = card.number
             total_sum += value
-
         return print(f"total sum: {total_sum}\n")
+    
+    def check_sum(self):
+        if self.currently_sum < 21:
+            print(f"{self.name} do you want another card?")
+
 
 class Dealer(Gambler):
     '''NPC player'''
@@ -74,13 +79,13 @@ cards_dealer = []
 
 # Create player
 user = Gambler(player,cards_user)
-gambler_npc_1 = Gambler("Walter White",cards_1)
-gambler_npc_2 = Gambler("Jesse Pinkman",cards_2)
-gambler_npc_3 = Gambler("Saul Godman",cards_3)
-gambler_npc_4 = Gambler("Tuco Salamanca",cards_4)
-dealer = Dealer("Dealer - Badger",cards_dealer)
+gambler_npc_1 = Gambler("Walter White",cards_1,0)
+gambler_npc_2 = Gambler("Jesse Pinkman",cards_2,0)
+gambler_npc_3 = Gambler("Saul Godman",cards_3,0)
+gambler_npc_4 = Gambler("Tuco Salamanca",cards_4,0)
+dealer = Dealer("Dealer - Badger",cards_dealer,0)
 
-players = [user, gambler_npc_1,gambler_npc_2,gambler_npc_3,gambler_npc_4,dealer]
+players = [gambler_npc_1,gambler_npc_2,gambler_npc_3,gambler_npc_4,dealer,user]
 
 print(f"\nok {player}, rules are simple:")
 print("- Get a hand value as close to 21 as possible without going over.") 
@@ -92,3 +97,6 @@ print("- Players act one at a time, in your turn you can hit or stand, thats it.
 
 user.get_initial_cards()
 user.show_initial_cards()
+
+print("ROUND 1") 
+
