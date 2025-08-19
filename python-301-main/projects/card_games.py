@@ -1,7 +1,9 @@
-class Card():
-    """Standard playing card from 1 to 13!"""
+import random
 
-    def __init__(self, kind:str, number):
+class Card():
+    """Standard card from 1 to 13!"""
+
+    def __init__(self, kind:str, number:int):
         self.kind = kind
         self.number = number
     
@@ -15,8 +17,34 @@ class Gambler():
         self.cards_in_hand = cards_in_hand
     def pick_card(self,card):
         cards.append(card)
+    def get_initial_cards(self):
+        for player in players:
+            while len(player.cards_in_hand)<2:
+                card = random.choice(cards)
+                cards.remove(card)
+                player.cards_in_hand.append(card)
+    def show_initial_cards(self):
+        for player in players:
+            print(f"Cards for {player.name}:")
+            print(f"{player.cards_in_hand[0]}")
+            print(f"{player.cards_in_hand[1]}")
+            player.total_sum()
+
+    def total_sum(self):
+        total_sum = 0
+        for card in self.cards_in_hand:
+            if card.number in ["Jack", "Queen", "King"]:
+                value = 10
+            elif card.number == "A":
+                value = 11   # (we'll handle the 1/11 flexibility later)
+            else:
+                value = card.number
+            total_sum += value
+
+        return print(f"total sum: {total_sum}\n")
 
 class Dealer(Gambler):
+    '''NPC player'''
     def pick_hidden_card(self,card):
         hidden_card = card
         return hidden_card
@@ -33,24 +61,34 @@ for kind in kind_list:
         card = Card(kind, num)
         cards.append(card)
 
-for card in cards:
-    print(card)
-
 print("\n<<<< Welcome to Card - Game - Version: Blackjack >>>>") 
 player = input(f"Please insert your name: ")
 
 # Cards in hand
-gambler_cards_in_hand = []
-dealer_cards_in_hand = []
+cards_user = []
+cards_1 = []
+cards_2 = []
+cards_3 = []
+cards_4 = []
+cards_dealer = []
 
 # Create player
-user = Gambler(player,gambler_cards_in_hand)
-dealer = Gambler("dealer_npc",dealer_cards_in_hand)
-gambler_npc_1
+user = Gambler(player,cards_user)
+gambler_npc_1 = Gambler("Walter White",cards_1)
+gambler_npc_2 = Gambler("Jesse Pinkman",cards_2)
+gambler_npc_3 = Gambler("Saul Godman",cards_3)
+gambler_npc_4 = Gambler("Tuco Salamanca",cards_4)
+dealer = Dealer("Dealer - Badger",cards_dealer)
+
+players = [user, gambler_npc_1,gambler_npc_2,gambler_npc_3,gambler_npc_4,dealer]
 
 print(f"\nok {player}, rules are simple:")
 print("- Get a hand value as close to 21 as possible without going over.") 
-print("- You play against the gambler_npc, whoever gets closer to 21 wins \n") 
+print("- Each player gets two cards face up on the table.") 
+print("- There are 5 player, plus the dealer, whoever gets closer to 21 wins") 
+print("- The dealer also gets two cards: one face up , and one face down.") 
+print("- Players act one at a time, in your turn you can hit or stand, thats it.\n") 
 
-while player_count < 22:
-    
+
+user.get_initial_cards()
+user.show_initial_cards()
