@@ -26,10 +26,17 @@ class Gambler():
                 player.cards_in_hand.append(card)
     def show_initial_cards(self):
         for player in players:
-            print(f"Cards for {player.name}:")
-            print(f"{player.cards_in_hand[0]}")
-            print(f"{player.cards_in_hand[1]}")
-            player.total_sum()
+            if player.name == "Dealer - Badger":
+                print(f"Cards for {player.name}:")
+                print(f"Hidden card")
+                print(f"{player.cards_in_hand[1]}")
+                self.total_sum
+                print(f"total sum: Secret\n")
+            else:
+                print(f"Cards for {player.name}:")
+                print(f"{player.cards_in_hand[0]}")
+                print(f"{player.cards_in_hand[1]}")
+                print(f"total sum: {player.total_sum()}\n")
 
     def total_sum(self):
         total_sum = 0
@@ -41,19 +48,24 @@ class Gambler():
             else:
                 value = card.number
             total_sum += value
-        return print(f"total sum: {total_sum}\n")
+            self.currently_sum = total_sum
+        return self.currently_sum
     
     def check_sum(self):
         if self.currently_sum < 21:
             print(f"{self.name} do you want another card?")
-
+        if self.cards_in_hand == 21:
+            print(f"{self.name} whoa! You got a blackjack!")
+        if self.cards_in_hand > 21:
+            print(f"{self.name} That was too much! You lost!")
+            exit()
 
 class Dealer(Gambler):
     '''NPC player'''
     def pick_hidden_card(self,card):
         hidden_card = card
         return hidden_card
-    def sum(self):
+    def check_sum(self):
         total_sum = self.pick_hidden_card.number + self.pick_hidden_card.number
 
 kind_list = ["Spades","Hearts","Diamonds","Clubs"]
@@ -78,7 +90,7 @@ cards_4 = []
 cards_dealer = []
 
 # Create player
-user = Gambler(player,cards_user)
+user = Gambler(player,cards_user,0)
 gambler_npc_1 = Gambler("Walter White",cards_1,0)
 gambler_npc_2 = Gambler("Jesse Pinkman",cards_2,0)
 gambler_npc_3 = Gambler("Saul Godman",cards_3,0)
