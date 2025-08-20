@@ -1,3 +1,5 @@
+'''Python Project: Card Game - Blackjack'''
+
 import random
 import time
 
