@@ -1,14 +1,9 @@
-'''Tasks
-Print out all movie titles and their directors.
-How long is the longest film? When was it released, 
-and what's its original title? Note the data types 
-of your values when checking for max() of a value.'''
+'''Studying data from Studio Ghibli API json file created in another file py'''
 
-# My solution without making a .json file... 
-import requests
+import json
 
-response = requests.get("https://ghibliapi-iansedano.vercel.app/api/films")
-data = response.json()['data']['films']
+with open(r"class practice\chapter 4\films.json", "r") as fin:
+    data = json.load(fin)
 
 running_time_dictionary= {}
 
