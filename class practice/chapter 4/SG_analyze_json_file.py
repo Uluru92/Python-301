@@ -1,4 +1,7 @@
-'''Studying data from Studio Ghibli API json file created in another file py'''
+'''Studying data from Studio Ghibli API json file,
+this file was created in another script py file before,
+this way, we avoid making lots of calls to an API,
+this method is used to save money $$$'''
 
 import json
 
