@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "a3d8e70f-46a0-4e5a-b850-db01620d6b92",
-            "name": "Haru",
-            "gender": "Female",
-            "age": "13",
-            "eye_color": "Brown",
-            "hair_color": "Brown",
+            "id": "7151abc6-1a9e-4e6a-9711-ddb50ea572ec",
+            "name": "Jiji",
+            "gender": "Male",
+            "age": "NA",
+            "eye_color": "Black",
+            "hair_color": "Black",
             "films": [
-                "https://ghibliapi-iansedano.vercel.app/api/films/90b72513-afd4-4570-84de-a56c312fdf81"
+                "https://ghibliapi-iansedano.vercel.app/api/films/ea660b10-85c4-4ae3-8a5f-41cea3648e3e"
             ],
             "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
-            "url": "https://ghibliapi-iansedano.vercel.app/api/people/a3d8e70f-46a0-4e5a-b850-db01620d6b92"
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/7151abc6-1a9e-4e6a-9711-ddb50ea572ec"
         }
     ]
 }

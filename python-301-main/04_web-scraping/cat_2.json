@@ -1,17 +1,18 @@
 {
     "data": [
         {
-            "id": "e9177769-9b6b-49c2-9820-d24f50b83ad9",
-            "name": "Thomas",
+            "id": "fc196c4f-0201-4ed2-9add-c6403f7c4d32",
+            "name": "Baron Humbert von Gikkingen",
             "gender": "Male",
             "age": "NA",
             "eye_color": "Green",
-            "hair_color": "Black",
+            "hair_color": "Yellow",
             "films": [
-                "https://ghibliapi-iansedano.vercel.app/api/films/790e0028-a31c-4626-a694-86b7a8cada40"
+                "https://ghibliapi-iansedano.vercel.app/api/films/ff24da26-a969-4f0e-ba1e-a122ead6c6e3",
+                "https://ghibliapi-iansedano.vercel.app/api/films/90b72513-afd4-4570-84de-a56c312fdf81"
             ],
             "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
-            "url": "https://ghibliapi-iansedano.vercel.app/api/people/e9177769-9b6b-49c2-9820-d24f50b83ad9"
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/fc196c4f-0201-4ed2-9add-c6403f7c4d32"
         }
     ]
 }

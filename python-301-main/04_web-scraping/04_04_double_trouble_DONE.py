@@ -23,29 +23,35 @@ class Cat(Character):
         self.hair_color = hair_color
     
     def __str__(self):
-        return (f"Cat Name={self.name}\nCat Eye Color={self.eye_color}\nCat Hair Color={self.hair_color}")
+        return (f"Cat Name: {self.name}\nCat Eye Color: {self.eye_color}\nCat Hair Color: {self.hair_color}")
 
 class Pokemon(Character):
     def __init__(self,name:str,number:int,type:str):
         self.name = name
         self.number = number
         self.type = type
-    
+
+    def __str__(self):
+            return (f"Pokemon Name: {self.name}\nPokemon Number: {self.number}\nPokemon Type: {self.type}")
+        
 
 class FusionCharacter(Character):
     def __init__(self, cat: Cat, pokemon: Pokemon):
-        # Combine the names
+        self.cat = cat
+        self.pokemon = pokemon
         self.name = f"{cat.name}-{pokemon.name}"
-        # Keep cat's appearance
         self.eye_color = cat.eye_color
         self.hair_color = cat.hair_color
-        # Keep pokemon's traits
         self.pokemon_type = pokemon.type
 
     def __str__(self):
-        return (f"FusionCharacter(name={self.name}, eye_color={self.eye_color}, "
-                f"hair_color={self.hair_color}, type={self.pokemon_type})")
-
+        return (
+            "These two characters are about to merge in one new creature!\n\n"
+            f"Cat:\nName: {self.cat.name}\nEye Color: {self.cat.eye_color}\nHair Color: {self.cat.hair_color}\n\n"
+            f"Pokemon:\nName: {self.pokemon.name}\nNumber: {self.pokemon.number}\nType: {self.pokemon.type}\n\n"
+            f"Result:\nFusionCharacter:\nName: {self.name}\nEye Color: {self.eye_color}\nHair Color: {self.hair_color}\nType: {self.pokemon_type}"
+        )
+    
 cats_url = []
 
 url_SG = "https://ghibliapi-iansedano.vercel.app/api/species"
@@ -88,9 +94,31 @@ cat_4 = cats_objects[3]
 cat_5 = cats_objects[4]
 cat_6 = cats_objects[5]
 
-print(cat_1)
+# Create 6 pokemons (from exercise before...)
+list_pokemons = ["bulbasaur","charmander","charmeleon","charizard","pidgeotto","pikachu"]
+pokemon_objects = [] # Here we collect all the pokemon objects to use them later!
 
+for index,pokemon in enumerate(list_pokemons):
+    with open(rf"pokemon_{index+1}.json", "r") as fin:
+        data = json.load(fin)
 
+        pokemon_name = data['name']
+        pokemon_number = data['id']
+        types_list = [poke_type['type']['name'] for poke_type in data["types"]] # we pick a random type if the pokemon has more than 1 type
+        pokemon_type = random.choice(types_list)
+
+        poke_obj = Pokemon(pokemon_name,pokemon_number,pokemon_type)
+        pokemon_objects.append(poke_obj)
+
+pokemon_1 = pokemon_objects[0]
+pokemon_2 = pokemon_objects[1]
+pokemon_3 = pokemon_objects[2]
+pokemon_4 = pokemon_objects[3]
+pokemon_5 = pokemon_objects[4]
+pokemon_6 = pokemon_objects[5]
+
+poke_cat_1 = FusionCharacter(cat_1,pokemon_1)
+print(poke_cat_1)
 
 
         

@@ -1,17 +1,17 @@
 {
     "data": [
         {
-            "id": "89026b3a-abc4-4053-ab1a-c6d2eea68faa",
-            "name": "Niya",
+            "id": "f467e18e-3694-409f-bdb3-be891ade1106",
+            "name": "Catbus",
             "gender": "Male",
             "age": "NA",
-            "eye_color": "White",
-            "hair_color": "Beige",
+            "eye_color": "Yellow",
+            "hair_color": "Brown",
             "films": [
-                "https://ghibliapi-iansedano.vercel.app/api/films/2de9426b-914a-4a06-a3a0-5e6d9d3886f6"
+                "https://ghibliapi-iansedano.vercel.app/api/films/58611129-2dbc-4a81-a72f-77ddfc1b1b49"
             ],
             "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
-            "url": "https://ghibliapi-iansedano.vercel.app/api/people/89026b3a-abc4-4053-ab1a-c6d2eea68faa"
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/f467e18e-3694-409f-bdb3-be891ade1106"
         }
     ]
 }
