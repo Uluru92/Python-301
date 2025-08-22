@@ -29,12 +29,14 @@ for index,pokemon in enumerate(list_pokemons):
     with open(rf"pokemon_{index+1}.json", "w", encoding="utf-8") as fout:
         json.dump(data, fout, indent=4, ensure_ascii=False)
 
+print(f"\nMy {len(list_pokemons)} favorites pokemons: \n")
+
 for index,pokemon in enumerate(list_pokemons):
     with open(rf"pokemon_{index+1}.json", "r") as fin:
         data = json.load(fin)
 
         print(f"Pokemon name: {data['name']}")
         print(f"Pokemon number: {data['id']}")
-        for index,type in enumerate(data["types"]):
-            print(f"Pokemon type #{index+1}: {data['types'][index]['type']['name']}")
+        for idx,poke_type in enumerate(data["types"]):
+            print(f"Pokemon type #{idx+1}: {poke_type['type']['name']}")
         print(" ")
