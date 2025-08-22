@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "id": "89026b3a-abc4-4053-ab1a-c6d2eea68faa",
+            "name": "Niya",
+            "gender": "Male",
+            "age": "NA",
+            "eye_color": "White",
+            "hair_color": "Beige",
+            "films": [
+                "https://ghibliapi-iansedano.vercel.app/api/films/2de9426b-914a-4a06-a3a0-5e6d9d3886f6"
+            ],
+            "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/89026b3a-abc4-4053-ab1a-c6d2eea68faa"
+        }
+    ]
+}

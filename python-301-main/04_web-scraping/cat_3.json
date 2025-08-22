@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "id": "3042818d-a8bb-4cba-8180-c19249822d57",
+            "name": "Cat King",
+            "gender": "Male",
+            "age": "87",
+            "eye_color": "Emerald",
+            "hair_color": "Grey",
+            "films": [
+                "https://ghibliapi-iansedano.vercel.app/api/films/90b72513-afd4-4570-84de-a56c312fdf81"
+            ],
+            "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/3042818d-a8bb-4cba-8180-c19249822d57"
+        }
+    ]
+}

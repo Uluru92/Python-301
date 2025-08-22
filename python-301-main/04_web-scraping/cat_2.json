@@ -1,0 +1,17 @@
+{
+    "data": [
+        {
+            "id": "e9177769-9b6b-49c2-9820-d24f50b83ad9",
+            "name": "Thomas",
+            "gender": "Male",
+            "age": "NA",
+            "eye_color": "Green",
+            "hair_color": "Black",
+            "films": [
+                "https://ghibliapi-iansedano.vercel.app/api/films/790e0028-a31c-4626-a694-86b7a8cada40"
+            ],
+            "species": "https://ghibliapi-iansedano.vercel.app/api/species/603428ba-8a86-4b0b-a9f1-65df6abef3d3",
+            "url": "https://ghibliapi-iansedano.vercel.app/api/people/e9177769-9b6b-49c2-9820-d24f50b83ad9"
+        }
+    ]
+}
