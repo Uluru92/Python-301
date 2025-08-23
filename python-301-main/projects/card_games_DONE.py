@@ -13,6 +13,7 @@ class Card():
     def __str__(self):
         return "%s of %s" % (self.number, self.kind)
     
+    
 class Gambler():
     '''BlackJack player'''
     def __init__(self,name,cards_in_hand,currently_sum):
@@ -20,21 +21,26 @@ class Gambler():
         self.cards_in_hand = cards_in_hand
         self.currently_sum = currently_sum
     def get_another_card(self):
-        """Decide if NPC wants another card (hit) or not (stand)."""
-        score = self.total_sum() 
-        if self.name == "Walter White":       # Smart/neutral strategy
-            return score < 17
-        elif self.name == "Jesse Pinkman":    # Risky
-            return score < 19
-        elif self.name == "Saul Godman":      # Conservative
-            return score < 15
-        elif self.name == "Tuco Salamanca":   # Crazy risk-taker
-            return score < 20
-        elif self.name.startswith("Dealer"):  # Dealer follows rules
-            return score < 17
-        else:  # Default
-            return score < 17                 # Just in case we add more players
-
+        """Decide if NPC wants another card, or return None for human."""
+        if self.npc or self.dealer:
+            if self.dealer:
+                return self.currently_sum < 17  # Dealer follows neutral rules
+            # Example NPC strategies
+            if self.name == "Walter White":     # Smart/neutral strategy
+                return self.currently_sum < 17
+            elif self.name == "Jesse Pinkman":  # Risky
+                return self.currently_sum < 19
+            elif self.name == "Saul Godman":    # Conservative
+                return self.currently_sum < 15
+            elif self.name == "Tuco Salamanca": # Crazy risk-taker
+                return self.currently_sum < 20
+            else:
+                return self.currently_sum < 17  # Just in case we add more players
+        else:
+            return None  # Human decision handled externally
+        
+    
+    
     def get_initial_cards(self):
         for player in players:
             while len(player.cards_in_hand)<2:

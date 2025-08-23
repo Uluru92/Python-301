@@ -1,0 +1,244 @@
+From Wikipedia, the free encyclopedia
+XML for Analysis
+(
+XMLA
+) is an industry standard for data access in analytical systems, such as
+online analytical processing
+(OLAP) and
+data mining
+. XMLA is based on other industry standards such as
+XML
+,
+SOAP
+and
+HTTP
+. XMLA is maintained by
+XMLA Council
+with
+Microsoft
+,
+Hyperion
+and
+SAS Institute
+being the XMLA Council founder members.
+History
+[
+edit
+]
+The XMLA specification was first proposed by
+Microsoft
+as a successor for
+OLE DB for OLAP
+in April 2000. By January 2001 it was joined by
+Hyperion
+endorsing XMLA. The 1.0 version of the standard was released in April 2001, and in September 2001 the XMLA Council was formed. In April 2002
+SAS
+joined Microsoft and Hyperion as founding member of XMLA Council.
+[
+1
+]
+With time, more than 25 companies joined with their support for the standard.
+API
+[
+edit
+]
+XMLA consists of only two
+SOAP
+methods: execute and discover.
+[
+2
+]
+It was designed in such a way to preserve simplicity.
+Execute
+[
+edit
+]
+Execute method has two parameters:
+Command - command to be executed. It can be
+MDX
+,
+DMX
+or
+SQL
+.
+Properties -
+XML
+list of command properties such as Timeout, Catalog name, etc.
+The result of Execute command could be
+Multidimensional Dataset
+or
+Tabular Rowset
+.
+Discover
+[
+edit
+]
+Discover method was designed to model all the discovery methods possible in
+OLEDB
+including various schema rowset, properties, keywords, etc. Discover method allows users to specify both what needs to be discovered and the possible restrictions or properties.
+The result of Discover method is a rowset.
+Query language
+[
+edit
+]
+XMLA specifies
+MDXML
+as the query language. In the XMLA 1.1 version, the only construct in MDXML is an
+MDX
+statement enclosed in the <Statement> tag.
+[
+3
+]
+Example
+[
+edit
+]
+Below is an example of XMLA Execute request with MDX query in command.
+<soap:Envelope>
+<soap:Body>
+<Execute
+xmlns=
+"urn:schemas-microsoft-com:xml-analysis"
+>
+<Command>
+<Statement>
+SELECT
+Measures.MEMBERS
+ON
+COLUMNS
+FROM
+Sales
+</Statement>
+</Command>
+<Properties>
+<PropertyList>
+<DataSourceInfo/>
+<Catalog>
+FoodMart
+</Catalog>
+<Format>
+Multidimensional
+</Format>
+<AxisFormat>
+TupleFormat
+</AxisFormat>
+</PropertyList>
+</Properties>
+</Execute>
+</soap:Body>
+</soap:Envelope>
+Session management
+[
+edit
+]
+XMLA has a notion of
+session state
+. It is maintained through predefined
+SOAP
+headers
+BeginSession - to begin a new session
+EndSession - to end existing session
+UseSession - to use existing session. SessionId attribute previously returned for BeginSession should be used.
+References
+[
+edit
+]
+^
+"XML for Analysis gathers steam"
+. Archived from the original on May 28, 2008.
+^
+"XML for Analysis Specification"
+. 30 June 2006.
+^
+"MDX / mdXML"
+. Archived from the original on September 7, 2008.
+External links
+[
+edit
+]
+XMLA resources and links
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=XML_for_Analysis&oldid=1279458678
+"
+Categories
+:
+XML-based standards
+Online analytical processing
+Application programming interfaces
+Hidden category:
+CS1: unfit URL

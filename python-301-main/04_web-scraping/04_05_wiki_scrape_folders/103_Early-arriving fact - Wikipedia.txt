@@ -1,0 +1,150 @@
+From Wikipedia, the free encyclopedia
+Dimensional Data modeling scenario
+In the
+data warehouse
+practice of
+extract, transform, load
+(ETL), an
+early fact
+or
+early-arriving fact
+,
+[
+1
+]
+also known as
+late-arriving dimension
+or
+late-arriving data
+,
+[
+2
+]
+denotes the detection of a dimensional
+natural key
+during
+fact table
+source loading, prior to the assignment of a corresponding
+primary key
+or
+surrogate key
+in the
+dimension table
+.  Hence, the fact which cites the dimension arrives early, relative to the definition of the dimension value. An example could be backdating or making corrections to data.
+[
+3
+]
+Handling
+[
+edit
+]
+Procedurally, an early fact can be treated several ways:
+As an error: On the presumption that the dimensional attribute values should have been collected before fact source loading
+As a valid fact, pause loading: The collection pauses whilst the missing dimensional attribute value itself is collected
+As a valid fact, load with dummy keys: A primary key value is generated on the dimension with no attributes (stub / dummy row), the fact completes processing, and the dimension attributes are populated (overwritten) later in the load processing on the new row
+Classify as a Suspense record: Assuming that the associated dimensional attribute was expected by process, move this fact record in a
+Suspense
+table and activate alert/SOPs (reporting mismatch [sum/count/aggr], business/data steward, manual correction etc.) In rare circumstances, the suspense records may also be combined (UNION) with the fact table to ensure the metrics are correctly calculated.
+References
+[
+edit
+]
+^
+"Kimball, Ralph. Design Tip #57: Early Arriving Facts. August, 2004"
+(PDF)
+. Archived from
+the original
+(PDF)
+on 2007-10-12
+. Retrieved
+2008-04-25
+.
+^
+Early Arriving Facts / Late Arriving Dimensions - LeapFrogBI
+^
+A gentle introduction to bitemporal data challenges - Roelant Vos
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Early-arriving_fact&oldid=1296749609
+"
+Categories
+:
+Business intelligence terms
+Data warehousing
+Hidden categories:
+Articles with short description
+Short description is different from Wikidata

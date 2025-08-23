@@ -1,0 +1,242 @@
+Fra Wikipedia, den frie encyklopedi
+Et
+datauttrekk
+, eller bare
+uttrekk
+, vil si å
+hente ut
+hente ut
+data
+(vanligvis fra
+ustrukturerte
+eller dårlig strukturerte) datakilder for videre
+dataprosessering
+eller
+lagring
+(
+datamigrering
+). Importen til det mellomliggende uthentingssystemet blir således vanligvis etterfulgt av
+datatransformasjon
+, og muligens at det legges til
+metadata
+før eksport til et annet steg i
+arbeidsprosessen
+på dataene.
+Et eksempel på datauttrekk kan være import av
+eksperimentelle
+data for første gang til en datamaskin fra primærkilder som
+elektroniske
+måleinstrument eller dataloggere. Dette kan for eksempel gjøres via
+elektriske kontakter
+som
+USB
+slik at
+primærdataene
+(rådata) kan være strømmes inn til en
+datamaskin
+.
+Datakilder
+[
+rediger
+|
+rediger kilde
+]
+Typiske ustrukturerte datakilder inkluderer
+nettsider
+,
+epost
+, dokumenter,
+pdf-filer
+,
+skannet
+tekst,
+rubrikkannonser
+, og så videre. Å trekke ut strukturerte data fra slike ustrukturerte kilder er en betydelig teknisk utfordring. En stor utfordring med datauttrekk i dag er hvordan man kan trekke ut data fra ustrukturerte datakilder og varierende dataformater. En nylig trend innen datauttrekk
+[
+1
+]
+fra
+verdensveven
+er
+vevskraping
+, som henter ut data på en systematisk måte fra grafiske brukergrensesnitt.
+Strukturering
+[
+rediger
+|
+rediger kilde
+]
+Strukturering av ustrukturerte data kan gjøres på en rekke måter:
+Bruke
+mønstergjenkjenning
+på tekst (for eksempel med
+regulære uttrykk
+) for å identifisere små eller store strukturer, som for eksempel en oppføring (rad) i en rapport og deres tilhørende data utifra topp- og bunntekster.
+Bruke en tabellbasert tilnærming for å identifisere vanlige avsnitt innenfor et begrenset domene, som for eksemåel å strukturere en
+curriculum vitae
+sendt på epost ved å kjenne igjen hva som er beskrivelser av ferdigheter, tidligere arbeidserfaring, kvalifikasjoner, og så videre. Uttrekket kan for eksempel basere seg på en standard mengde av vanlige overskrifter (som vil variere fra språk til språk), for eksempel kan "utdanning" finnes under "utdanning", "kvalifikasjon" eller "kurs"
+Bruke tekstanalyse å prøve å forstå teksten og koble den til annen informasjon
+Se også
+[
+rediger
+|
+rediger kilde
+]
+Datauthenting
+, uthenting av data fra et databasehåndteringssystem, ofte ved å bruke en spørring med en mengde kriterier
+Informasjonsutvinning
+, oppdagelse av mønstre i store datamengder ved bruk av metoder basert på statistikk, databaseteknikk eller maskinlæring
+Informasjonsuttrekk
+, automatisert uthenting av strukturert informasjon fra ustrukturerte eller semistrukturerte maskinlesbare data, som for eksempel bruk av
+naturlig språkbehandling
+(NLP) for å trekke ut innhold fra bilder, lyd eller dokumenter
+Uttrekk, transformasjon og lasting
+(ETL), prosedyre for å hente store datamengder fra eksterne kilder, deretter transformere dem i kildesystemet, og til slutt laste dem i et eller flere målsystemer
+Referanser
+[
+rediger
+|
+rediger kilde
+]
+^
+«data extraction.»
+. Arkivert fra
+originalen
+12. juni 2017
+. Besøkt 18. februar 2023
+.
+v
+d
+r
+Data
+Administrasjon
+Analyse
+Ansvarlig
+Arkeologi
+Avstamming
+Avstemming/justering
+Bibliotek
+Berikelse
+Beskyttelse (personvern)
+Bevaring
+ETL
+/
+ELT
+Uttrekk
+Transformasjon
+Lasting
+Filantropi
+Formathåndtering
+Forringelse
+Fusjon
+Gjenoppretting
+Innhenting
+Innsamling
+Integrasjon
+Integritet
+Komprimering
+Korrupsjon
+Kuratering
+Kvalitet
+Lagring (medium)
+Lagring (personvern)
+Migrering
+Oppdrett
+Preprosessering
+Prosessering
+Publisering
+Redigering
+Reduksjon
+Sikkerhet
+Skraping
+Veven
+Skrubbing
+Stor
+Synkronisering
+Tap
+Utvinning
+Validering
+Vasking
+Varehus
+Vitenskap
+v
+d
+r
+Datavarehus
+Opprettelse av
+datavarehus
+Konsepter
+Database
+Edgar F. Codd
+Relasjonsdatabase
+Dimensjon
+Dimensjonsmodellering
+Fakta
+OLAP
+Stjernemodell
+Snøflakmodell
+Omvendt stjernemodell
+Aggregering
+Varianter
+Datamaske
+Datanav
+Ensemble-modelleringsmønstre
+Ankermodellering
+Datahvelvmodellering
+Fokalmodellering
+Kolonneorientert database
+HOLAP
+MOLAP
+ROLAP
+Operasjonelt datalager
+Elementer
+Dataordbok
+/
+metadata
+Datatorg
+Sjette normalform
+Surrogatnøkkel
+Fakta
+Faktatabell
+Tidlig ankommende fakta
+Måling
+Dimensjon
+Dimensjonstabell
+Degenerert
+Endringstreg
+Fylling
+Uttrekk, transformasjon, lasting (ETL)
+Uttrekk, lasting, transformasjon (ELT)
+Uttrekk
+Transformasjon
+Lasting
+Bruk av
+datavarehus
+Konsepter
+Virksomhetsetterretning
+Instrumentpanel
+Datautvinning
+Beslutningsstøtte
+OLAP-kube
+Datavarehusautomasjon
+Språk
+Data Mining Extensions (DMX)
+Multidimensional Expressions (MDX)
+XML for Analysis (XMLA)
+Verktøy
+Virksomhetsetterretning-programvare
+Rapporteringsprogramvare
+Regneark
+Relatert
+Folk
+Bill Inmon
+Ralph Kimball
+Dan Linstedt
+Lars Rönnbäck
+Hentet fra «
+https://no.wikipedia.org/w/index.php?title=Datauttrekk&oldid=24970522
+»
+Kategorier
+:
+Datavarehusmetodikk
+Dataadministrasjon

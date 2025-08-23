@@ -10,6 +10,7 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+import os
 
 URL = "https://en.wikipedia.org/wiki/Data_extraction"
 response = requests.get(URL)
@@ -34,13 +35,24 @@ for link in content_div.find_all("a", href=True):
     if not full_url.startswith("#"):
         links.append(full_url)
 
-for l in links:
-    print(l)
+# Lets create a folder to hold all the information (text) extracted in each link
+os.makedirs("04_05_wiki_scrape_folders", exist_ok=True)
 
-'''
-for l in links:
-    sub_request = requests.get(l)
-    sub_soup = BeautifulSoup(sub_request.text,"html.parser")
-    sub_title = sub_soup.find("h1", class_="firstHeading mw-first-heading")
-    sub_content_div = sub_soup.find("div", class_="mw-content-ltr mw-parser-output")
-    print(sub_title)'''
+for idx, url in enumerate(links, 1):
+    try:
+        sub_request = requests.get(url)
+        sub_soup = BeautifulSoup(sub_request.text,"html.parser")
+
+        title_tag = sub_soup.find("title")
+        title_text = title_tag.get_text(strip=True) if title_tag else f"article_{idx}" # Get title name, if there is not: title with the index
+        
+        content_div = sub_soup.find("div", class_="vector-body")
+        article_text = content_div.get_text("\n", strip=True) if content_div else ""
+
+        # save file for each link into the folder created before
+        filename = f"04_05_wiki_scrape_folders/{idx}_{title_text.replace('/', '_')}.txt" # Just in case title has a '/' ... replace it with a '_'
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(article_text)
+
+    except Exception as e:
+        print(f"Failed {url}: {e}")

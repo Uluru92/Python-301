@@ -1,0 +1,254 @@
+From Wikipedia, the free encyclopedia
+Data warehouse automation
+(
+DWA
+) refers to the process of accelerating and automating the
+data warehouse
+development cycles, while assuring quality and consistency. DWA is believed to provide
+automation
+of the entire lifecycle of a data warehouse, from source
+system analysis
+to
+testing
+to
+documentation
+. It helps improve productivity, reduce cost, and improve overall quality.
+[
+1
+]
+General
+[
+edit
+]
+Data warehouse automation primarily focuses on automation of each and every step involved in the
+lifecycle
+of a data warehouse, thus reducing the efforts required in managing it.
+[
+2
+]
+Data warehouse automation works on the principles of
+design patterns
+. It comprises a central repository of design patterns, which encapsulate architectural standards as well as best practices for
+data design
+,
+data management
+,
+data integration
+, and data usage.
+[
+3
+]
+In November 2015, an analyst firm has published a guide
+Which Data Warehouse Automation Tool is Right for You?
+covering four of the leading products in the DWA space.
+[
+4
+]
+In November 2015, an international software and technology services company engaged in developing ‘
+agile
+tools’ for the data integration industry, was named by CIO Review as one of the 20 most promising productivity tools solution providers 2015.
+[
+5
+]
+Benefits
+[
+edit
+]
+Data warehouse automation can provide advantages like source
+data exploration
+, warehouse data models,
+ETL
+generation,
+test automation
+,
+metadata management
+,
+managed deployment
+, scheduling, change impact analysis and easier maintenance and modification of the data warehouse.
+[
+6
+]
+More important than the technical features of data warehouse automation tools, however, is the ability to deliver projects faster and with less resources.
+[
+7
+]
+See also
+[
+edit
+]
+Data warehouse
+Data mart
+Data warehouse appliance
+Data integration
+WhereScape
+References
+[
+edit
+]
+^
+"Automate and accelerate your data transformations"
+.
+www.attunity.com
+. Attunity
+. Retrieved
+7 December
+2015
+.
+^
+"New Buzzword! Data Warehouse Automation"
+.
+blogs.jetreports.com
+. jetreports. Archived from
+the original
+on 9 October 2015
+. Retrieved
+7 December
+2015
+.
+^
+"Data Warehouse Automation - A Decision Guide"
+(PDF)
+.
+www.wherescape.com
+. David L. Wells, Infocentric LLC. Archived from
+the original
+(PDF)
+on 30 June 2016
+. Retrieved
+7 December
+2015
+.
+^
+"Which Data Warehouse Automation Tool is Right for You?"
+.
+eckerson.com
+. Wayne Eckerson
+. Retrieved
+9 December
+2015
+.
+^
+"CIO Magazine Award - 20 Most promising productivity tools"
+.
+www.analtyixds.com
+. AnalytiX DS. Archived from
+the original
+on 22 August 2016
+. Retrieved
+25 November
+2016
+.
+^
+"Data Warehouse Automation (DWA)?"
+.
+timextender.com
+. TimeXtender Software 2015
+. Retrieved
+7 December
+2015
+.
+^
+"Deliver Faster"
+.
+kalido.com
+. Magnitude Software. Archived from
+the original
+on 10 January 2016
+. Retrieved
+9 December
+2015
+.
+External links
+[
+edit
+]
+CIO Magazine Award - 20 Most promising productivity tools 'CIO Review', November 10, 2015
+[
+permanent dead link
+]
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Data_warehouse_automation&oldid=1306502696
+"
+Categories
+:
+Data management
+Data warehousing
+Hidden categories:
+All articles with dead external links
+Articles with dead external links from August 2025
+Articles with permanently dead external links

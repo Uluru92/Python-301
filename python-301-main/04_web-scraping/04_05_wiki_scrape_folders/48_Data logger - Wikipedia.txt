@@ -1,0 +1,327 @@
+From Wikipedia, the free encyclopedia
+Recording device
+[
+citation needed
+]
+Not to be confused with
+Computer log file
+.
+For path tracking devices, see
+GPS tracking unit § Data loggers
+.
+This article
+needs additional citations for
+verification
+.
+Please help
+improve this article
+by
+adding citations to reliable sources
+. Unsourced material may be challenged and removed.
+Find sources:
+"Data logger"
+–
+news
+·
+newspapers
+·
+books
+·
+scholar
+·
+JSTOR
+(
+October 2020
+)
+(
+Learn how and when to remove this message
+)
+Data logger Cube storing technical and sensor data
+A
+data logger
+(also
+datalogger
+or
+data recorder
+) is an electronic device that records data over time or about location either with a built-in
+instrument
+or
+sensor
+or via external instruments and sensors. Increasingly, but not entirely, they are based on a digital processor (or computer), and called digital data loggers (DDL). They generally are small, battery-powered, portable, and equipped with a microprocessor, internal memory for data storage, and sensors. Some data loggers interface with a personal computer and use software to activate the data logger and view and analyze the collected data, while others have a local interface device (keypad, LCD) and can be used as a stand-alone device.
+Data loggers vary from general-purpose devices for various measurement applications to very specific devices for measuring in one environment or application type only. While it is common for general-purpose types to be
+programmable
+, many remain static machines with only a limited number or no changeable parameters. Electronic data loggers have replaced
+chart recorders
+in many applications.
+One primary benefit of using data loggers is their ability to automatically collect data on a 24-hour basis. Upon activation, data loggers are typically deployed and left unattended to measure and record information for the duration of the monitoring period. This allows for a comprehensive, accurate picture of the environmental conditions being monitored, such as air temperature and relative humidity.
+The cost of data loggers has been declining over the years as technology improves and costs are reduced. Simple single-channel data loggers can cost as little as $25, while more complicated loggers may cost hundreds or thousands of dollars.
+Data formats
+[
+edit
+]
+Standardization of protocols and data formats has been a problem but is now growing in the industry and
+XML
+,
+JSON
+, and
+YAML
+are increasingly being adopted for data exchange. The development of the
+Semantic Web
+and the
+Internet of Things
+is likely to accelerate this present trend.
+Instrumentation protocols
+[
+edit
+]
+Several protocols have been standardized including a smart protocol,
+SDI-12
+, that allows some instrumentation to be connected to a variety of data loggers. The use of this standard has not gained much acceptance outside the environmental industry. SDI-12 also supports multi-drop instruments. Some data logging companies support the
+MODBUS
+standard. This has been used traditionally in the industrial control area, and many industrial instruments support this communication standard. Another multi-drop protocol that is now starting to become more widely used is based upon
+CAN-Bus
+(ISO 11898). Some data loggers use a flexible scripting environment to adapt to various non-standard protocols.
+Data logging versus data acquisition
+[
+edit
+]
+The terms data logging and
+data acquisition
+are often used interchangeably. However, in a historical context, they are quite different. A data logger is a data acquisition system, but a data acquisition system is not necessarily a data logger.
+Data loggers typically have slower
+sample rates
+. A maximum sample rate of 1
+Hz
+may be considered to be very fast for a data logger, yet very slow for a typical data acquisition system.
+Data loggers are implicitly stand-alone devices, while typical data acquisition systems must remain tethered to a computer to acquire data. This stand-alone aspect of data loggers implies onboard memory that is used to store acquired data. Sometimes this memory is very large to accommodate many days, or even months, of unattended recording. This memory may be battery-backed
+static random access memory
+,
+flash memory
+, or
+EEPROM
+. Earlier data loggers used
+magnetic tape
+, punched paper tape, or directly viewable records such as "strip
+chart recorders
+".
+Given the extended recording times of data loggers, they typically feature a mechanism to record the date and time in a
+timestamp
+to ensure that each recorded data value is associated with a date and time of acquisition to produce a
+sequence of events
+. As such, data loggers typically employ built-in
+real-time clocks
+whose published drift can be an important consideration when choosing between data loggers.
+Data loggers range from simple single-channel input to complex multi-channel instruments. Typically, the simpler the device the less programming flexibility. Some more sophisticated instruments allow for cross-channel computations and alarms based on predetermined conditions. The newest data loggers can serve web pages, allowing numerous people to monitor a system remotely.
+The unattended and remote nature of many data logger applications implies the need for some applications to operate from a
+DC
+power source, such as a
+battery
+. Solar power may be used to supplement these power sources. These constraints have generally led to ensuring that the devices they market are extremely power efficient relative to computers. In many cases, they are required to operate in harsh environmental conditions where computers will not function reliably.
+This unattended nature also dictates that data loggers must be extremely reliable. Since they may operate for long periods nonstop with little or no human supervision and may be installed in harsh or remote locations, it is imperative that so long as they have power, they will not fail to log data for any reason. Manufacturers go to great lengths to ensure that the devices can be depended on in these applications. As such data loggers are almost completely immune to the problems that might affect a general-purpose computer in the same application, such as program crashes and the instability of some operating systems.
+Applications
+[
+edit
+]
+Data logger application for weather station at P2I
+LIPI
+Applications of data logging include:
+Unattended
+weather station
+recording (such as
+wind speed
+/ direction,
+temperature
+,
+relative humidity
+,
+solar radiation
+).
+Unattended hydrographic recording (such as water level, water depth, water flow, water pH, water conductivity).
+Unattended soil moisture level recording.
+Unattended gas pressure recording.
+Offshore buoys for recording a variety of environmental conditions.
+Road traffic counting.
+Measure
+temperatures
+(humidity, etc.) of perishables during shipments:
+Cold chain
+.
+[
+1
+]
+Measure variations in light intensity.
+Measuring temperature of pharmaceutical products, medicines and vaccines during storage
+Measuring temperature and humidity of perishable products during transportation to ensure cold chain is maintained
+Process monitoring for maintenance and troubleshooting applications.
+Process monitoring to verify warranty conditions
+Wildlife research with pop-up archival tags
+Measure
+vibration
+and handling
+shock
+(drop height) environment of distribution
+packaging
+.
+[
+2
+]
+Tank level monitoring.
+Deformation monitoring
+of any object with geodetic or geotechnical sensors controlled by an
+automatic deformation monitoring system
+.
+Environmental monitoring
+.
+Vehicle testing (including crash testing)
+Motor racing
+Monitoring of relay status in railway signaling.
+For science education enabling 'measurement', 'scientific investigation' and an appreciation of 'change'
+Record trend data at regular intervals in veterinary vital signs monitoring.
+Load profile
+recording for energy consumption management.
+Temperature, humidity and power use for heating and air conditioning efficiency studies.
+Water level monitoring for groundwater studies.
+Digital electronic bus sniffer for debug and validation
+Examples
+[
+edit
+]
+Black-box (stimulus/response)
+loggers:
+A
+flight data recorder
+(FDR) is a piece of recording equipment used to collect specific aircraft performance data.  The term may also be used, albeit less accurately, to describe the
+cockpit voice recorder
+(CVR), another type of data recording device found on board aircraft.
+An
+event data recorder
+(EDR) is a device installed by the manufacturer in some
+automobiles
+which collects and stores various data during the time-frame immediately before and after a crash.
+A
+voyage data recorder
+(VDR) is a data recording system designed to collect data from various sensors on board a ship.
+A
+train event recorder
+is a device that records data about the operation of train controls and performance in response to those controls and other train control systems.
+An
+accident data recorder
+(ADR) is a device for triggering accidents or incidents in most kind of land vehicles and recording the relevant data. In automobiles, all
+diagnostic trouble codes
+(DTCs) are logged in
+engine control units
+(ECUs) so that at the time of service of a vehicle, a service engineer will read all the DTCs using
+Tech-2
+or similar tools connected to the
+on-board diagnostics
+port, and will come to know problems occurred in the vehicle. Sometimes a small
+OBD data logger
+is plugged into the same port to continuously record vehicle data.
+In
+embedded system
+and digital electronics design, specialized high-speed digital data logger help overcome the limitations of more traditional instruments such as the
+oscilloscope
+and the
+logic analyzer
+. The main advantage of a data logger is its ability to record very long traces, which proves very useful when trying to correct functional bugs that happen once in while.
+In the racing industry, Data Loggers are used to record data such as braking points, lap/sector timing, and track maps, as well as any on-board vehicle sensors.
+Health data
+loggers:
+The growing, preparation, storage and transportation of food. Data logger is generally used for data storage and these are small in size.
+A
+Holter monitor
+is a portable device for continuously monitoring various electrical activity of the cardiovascular system for at least 24 hours.
+Electronic health record
+loggers.
+Other general
+data acquisition
+loggers:
+An (scientific) experimental testing data acquisition tool.
+Ultra Wideband Data Recorder, high-speed data recording up to 2 Giga Samples per second.
+Future directions
+[
+edit
+]
+Data Loggers are changing more rapidly now than ever before. The original model of a stand-alone data logger is changed to one of a device that collects data but also has access to wireless communications for alarming of events, automatic reporting of data, and remote control. Data loggers are beginning to serve web pages for current readings,
+e-mail
+their alarms, and
+FTP
+their daily results into databases or direct to the users. Very recently, there is a trend to move away from proprietary products with commercial software to open-source software and hardware devices. The
+Raspberry Pi
+single-board computer
+is among others a popular platform hosting real-time Linux or preemptive-kernel Linux operating systems with many
+digital interfaces like
+I2C
+,
+SPI
+, or
+UART
+enable the direct interconnection of a digital
+sensor
+and a computer,
+and an unlimited number of configurations to show measurements in real-time over the
+internet
+, process data, plot charts, and diagrams...
+See also
+[
+edit
+]
+Black box
+Bus analyzer
+Computer data logging
+: logging APIs, server logs & syslog, web logging & web counters
+Continuous emissions monitoring system
+Runtime intelligence
+Sequence of events recorder
+SensorML
+Shock and vibration data logger
+Temperature data logger
+References
+[
+edit
+]
+^
+Riva, Marco; Piergiovanni, Schiraldi, Luciano; Schiraldi, Alberto (January 2001). "Performances of time-temperature indicators in the study of temperature exposure of packaged fresh foods".
+Packaging Technology and Science
+.
+14
+(1):
+1–
+39.
+doi
+:
+10.1002/pts.521
+.
+S2CID
+108566613
+.
+^
+Singh, J; Singh, Burgess (2007).
+"Measurement, Analysis, and Comparison of the Parcel Shipping Shock and Drop Environment of the United States Postal Service with Commercial Carriers"
+.
+Journal of Testing and Evaluation
+.
+35
+(3): 100787.
+doi
+:
+10.1520/JTE100787
+.
+Authority control databases
+: National
+Germany
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Data_logger&oldid=1305686670
+"
+Categories
+:
+Recording devices
+Onboard computers
+Measuring instruments
+Hidden categories:
+Articles with short description
+Short description matches Wikidata
+All articles with unsourced statements
+Articles with unsourced statements from January 2025
+Articles needing additional references from October 2020
+All articles needing additional references

@@ -1,0 +1,111 @@
+From Wikipedia, the free encyclopedia
+Daniel Linstedt
+is an American
+data architect
+and inventor of the
+data modeling
+method
+data vault
+for
+data warehouses
+and
+business intelligence
+. He developed the model in the 1990s and published the first version in the early 2000s.
+[
+1
+]
+In 2012, Data Vault 2.0 was announced
+[
+2
+]
+and it was released in 2013.
+[
+citation needed
+]
+In addition to data modeling, the data vault method incorporates
+process design
+,
+database tuning
+and performance improvements for
+ETL
+/
+ELT
+,
+Capability Maturity Model Integration
+(CMMI) and
+agile software development
+.
+Dan holds a
+Bachelor of Science
+in
+computer science
+from
+California State University, Chico
+. Since 2020, he has been the
+chief executive officer
+(CEO) of DataVaultAlliance Holdings LLC.
+Selected works
+[
+edit
+]
+[
+3
+]
+The Business of Data Vault Modeling
+(2010-11-19) by author Daniel Linstedt and co-authors Kent Graziano and Hans Hultgren
+ISBN
+1-4357-1914-X
+Super Charge Your Data Warehouse: Invaluable Data Modeling Rules to Implement Your Data Vault (Data Warehouse Architecture Book 1)
+(2012-05-20) by Dan Linstedt and Kent Graziano
+ISBN
+1-4637-7868-6
+Building a Scalable Data Warehouse with Data Vault 2.0
+(2015-09-15) by Daniel Linstedt and Michael Olschimke
+ISBN
+978-0-12-802510-9
+See also
+[
+edit
+]
+Data architecture
+Enterprise architecture
+References
+[
+edit
+]
+^
+"Data Vault Series 1 – Data Vault Overview"
+. Retrieved
+2023-03-03
+.
+^
+"Data Vault Modeling & Methodology - Data Warehouse Architecture"
+. 2012-08-21. Archived from
+the original
+on 2012-08-21
+. Retrieved
+2023-03-03
+.
+^
+"Dan Linstedt: books, biography, latest update"
+. Retrieved
+2023-03-03
+.
+Authority control databases
+International
+ISNI
+VIAF
+National
+Czech Republic
+Korea
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Dan_Linstedt&oldid=1215701719
+"
+Categories
+:
+Living people
+People in information technology
+Hidden categories:
+All articles with unsourced statements
+Articles with unsourced statements from March 2023
+Year of birth missing (living people)

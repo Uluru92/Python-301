@@ -1,0 +1,134 @@
+From Wikipedia, the free encyclopedia
+Data consistency
+In
+computerized business management
+,
+single version of the truth
+(
+SVOT
+), is a technical concept describing the
+data warehousing
+ideal of having either a single centralised
+database
+, or at least a distributed synchronised database, which stores all of an organisation's data in a consistent and
+non-redundant
+form. This contrasts with the related concept of
+single source of truth
+(SSOT), which refers to a data storage principle to always source a particular piece of information from one place.
+[
+citation needed
+]
+Applied to message sequencing
+[
+edit
+]
+In some systems and in the context of message processing systems (often
+real-time systems
+), this term also refers to the goal of establishing a single agreed sequence of messages within a database formed by a particular but arbitrary sequencing of records. The key concept is that data combined in a certain sequence is a "truth" which may be analyzed and processed giving particular results, and that although the sequence is arbitrary (and thus another correct but equally arbitrary sequencing would ultimately provide different results in any analysis), it is desirable to agree that the sequence enshrined in the "single version of the truth" is the version that will be considered "the truth", and that any conclusions drawn from analysis of the database are valid and unarguable, and (in a technical context) the database may be duplicated to a backup environment to ensure a persistent record is kept of the "single version of the truth".
+The key point is when the database is created using an external data source (such as a sequence of trading messages from a stock exchange) an arbitrary selection is made of one possibility from two or more equally valid representations of the input data, but henceforth the decision sets "in stone" one and only one version of the truth.
+As applied to message sequencing
+[
+edit
+]
+Critics of SVOT as applied to message sequencing argue that this concept is not scalable. As the world moves towards systems spread over many processing nodes, the effort involved in negotiating a single agreed-upon sequence becomes prohibitive.
+But as pointed out by Owen Rubel at his
+API
+World talk 'The New API Pattern', the SVOT is always going to be the service layer in a distributed architecture where
+input/output
+(I/O) meet; this also is where the endpoint binding belongs to allow for modularization and better abstraction of the I/O data across the architecture to avoid the architectural
+cross cutting concern
+.
+[
+1
+]
+See also
+[
+edit
+]
+Closed world assumption
+, formal-logic assumption that any statement that is not known to be true, is considered false
+Open world assumption
+, formal-logic assumption that the truth-value of a statement is independent of whether it is known to be true by any single observer or agent
+The Kimball lifecycle
+, a high-level sequence tasks used to design, develop and deploy a data warehouse or business intelligence system
+Dimensional modeling
+, a "bottom-up" approach to
+data warehousing
+pioneered by
+Ralph Kimball
+, in contrast to the older
+Bill Inmon
+method "top-down" approach
+References
+[
+edit
+]
+^
+http://www.slideshare.net/bobdobbes/apiworld
+[
+dead link
+]
+Bibliography
+[
+edit
+]
+King, Julia (2003-12-22).
+"Business Intelligence: One Version of the Truth"
+.
+ComputerWorld
+.
+Lamport, Leslie (July 1978).
+"Time, Clocks, and the Ordering of Events in a Distributed System"
+(PDF)
+.
+Communications of the ACM
+.
+21
+(7):
+558–
+565.
+doi
+:
+10.1145/359545.359563
+.
+S2CID
+215822405
+.
+Inmon, Bill (2004-09-09).
+"The Single Version Of The Truth"
+.
+Business Intelligence Network
+. Powell Media.
+https://web.archive.org/web/20061015232747/http://www.industryweek.com/EventDetail.aspx?EventID=179
+Chisholm, Malcolm (December 2006),
+"There is No Single Version of the Truth"
+,
+Information Management Magazine
+, retrieved
+2010-03-15
+This
+computer science
+article is a
+stub
+. You can help Wikipedia by
+expanding it
+.
+v
+t
+e
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Single_version_of_the_truth&oldid=1143858648
+"
+Categories
+:
+Data modeling
+Database normalization
+Computer science stubs
+Hidden categories:
+All articles with dead external links
+Articles with dead external links from February 2022
+Articles with short description
+Short description is different from Wikidata
+All articles with unsourced statements
+Articles with unsourced statements from July 2012
+All stub articles

@@ -1,0 +1,163 @@
+From Wikipedia, the free encyclopedia
+This article
+relies largely or entirely on a
+single source
+.
+Relevant discussion may be found on the
+talk page
+. Please help
+improve this article
+by
+introducing  citations to additional sources
+.
+Find sources:
+"Extract, load, transform"
+–
+news
+·
+newspapers
+·
+books
+·
+scholar
+·
+JSTOR
+(
+November 2023
+)
+Extract, load, transform
+(
+ELT
+) is an alternative to
+extract, transform, load
+(ETL) used with
+data lake
+implementations. In contrast to ETL, in ELT models the
+data
+is not transformed on entry to the data lake, but stored in its original raw format. This enables faster loading times. However, ELT requires sufficient processing power within the
+data processing
+engine to carry out the transformation on demand, to return the results in a timely manner.
+[
+1
+]
+[
+2
+]
+Since the data is not processed on entry to the data lake, the query and schema do not need to be defined a priori (although often the schema will be available during load since many data sources are extracts from databases or similar structured data systems and hence have an associated schema). ELT is a data
+pipeline
+model.
+[
+3
+]
+[
+4
+]
+Benefits
+[
+edit
+]
+Some of the benefits of an ELT process include speed and the ability to handle both structured and unstructured data.
+[
+5
+]
+Cloud data lake components
+[
+edit
+]
+Common storage options
+[
+edit
+]
+AWS
+Simple Storage Service
+(S3)
+Amazon RDS
+Azure
+Azure Blob Storage
+GCP
+Google Storage
+(GCS)
+Querying
+[
+edit
+]
+AWS
+Redshift Spectrum
+Athena
+EMR (Presto)
+Azure
+Azure Data Lake
+GCP
+BigQuery
+References
+[
+edit
+]
+^
+"What is ELT (Extract, Load, Transform)? | IBM"
+.
+www.ibm.com
+. October 2021
+. Retrieved
+2024-01-30
+.
+^
+Abdullahi, Aminu (2023-06-30).
+"ETL vs ELT: What Are the Main Differences and Which Is Better?"
+.
+TechRepublic
+. Retrieved
+2024-01-30
+.
+^
+Using Redshift Spectrum to load data pipelines
+[
+usurped
+]
+Published by deductive.com on January 17, 2018, retrieved on April 3, 2019.
+^
+"What is ELT (Extract, Load, Transform)? | dbt Developer Hub"
+.
+docs.getdbt.com
+. 2024-01-30
+. Retrieved
+2024-01-30
+.
+^
+Mishra, Tanya (2023-09-02).
+"ETL vs ELT: Meaning, Major Differences & Examples"
+.
+Analytics Insight
+. Retrieved
+2024-01-30
+.
+External links
+[
+edit
+]
+Dull, Tamara,
+"The Data Lake Debate: Pro is Up First"
+,
+smartdatacollective.com
+, March 20, 2015.
+ELT: Extract, Load, and Transform A Complete Guide
+| Astera Software
+This computing article is a
+stub
+. You can help Wikipedia by
+expanding it
+.
+v
+t
+e
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Extract,_load,_transform&oldid=1289105029
+"
+Categories
+:
+Data warehousing
+Computing stubs
+Hidden categories:
+Articles needing additional references from November 2023
+All articles needing additional references
+All stub articles

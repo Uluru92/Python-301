@@ -1,0 +1,244 @@
+From Wikipedia, the free encyclopedia
+This is the
+current revision
+of this page, as edited by
+LR.127
+(
+talk
+|
+contribs
+)
+at
+16:43, 7 July 2025
+(Adding local
+short description
+: "Process in data storage", overriding Wikidata description "act or process of retrieving data out of (usually unstructured or poorly structured) data sources for further data processing or data storage (data migration)")
+. The present address (URL) is a
+permanent link
+to this version.
+Revision as of 16:43, 7 July 2025 by
+LR.127
+(
+talk
+|
+contribs
+)
+(Adding local
+short description
+: "Process in data storage", overriding Wikidata description "act or process of retrieving data out of (usually unstructured or poorly structured) data sources for further data processing or data storage (data migration)")
+(
+diff
+)
+← Previous revision
+| Latest revision (diff) | Newer revision → (diff)
+Process in data storage
+This article
+relies largely or entirely on a
+single source
+.
+Relevant discussion may be found on the
+talk page
+. Please help
+improve this article
+by
+introducing  citations to additional sources
+.
+Find sources:
+"Data extraction"
+–
+news
+·
+newspapers
+·
+books
+·
+scholar
+·
+JSTOR
+(
+August 2023
+)
+Data extraction
+is the act or process of retrieving
+data
+out of (usually
+unstructured
+or poorly structured) data sources for further
+data processing
+or
+data storage
+(
+data migration
+). The
+import
+into the intermediate extracting system is thus usually followed by
+data transformation
+and possibly the addition of
+metadata
+prior to
+export
+to another stage in the data
+workflow
+.
+Usually, the term data extraction is applied when (
+experimental
+) data is first imported into a computer from primary sources, like
+measuring
+or
+recording devices
+. Today's
+electronic devices
+will usually present an
+electrical connector
+(e.g.
+USB
+) through which '
+raw data
+' can be
+streamed
+into a
+personal computer
+.
+Data sources
+[
+edit
+]
+Typical unstructured data sources include
+web pages
+,
+emails
+, documents,
+PDFs
+, social media, scanned text, mainframe reports, spool files, multimedia files, etc. Extracting data from these unstructured sources has grown into a considerable technical challenge, where as historically data extraction has had to deal with changes in physical hardware formats, the majority of current data extraction deals with extracting data from these unstructured data sources, and from different software formats. This growing process of data extraction from the web is referred to as "Web data extraction" or "
+Web scraping
+".
+Imposing structure
+[
+edit
+]
+The act of adding structure to unstructured data takes a number of forms
+Using text
+pattern matching
+such as
+regular expressions
+to identify small or large-scale structure e.g. records in a report and their associated data from headers and footers;
+Using a table-based approach to identify common sections within a limited domain e.g. in emailed resumes, identifying skills, previous work experience, qualifications etc. using a standard set of commonly used headings (these would differ from language to language), e.g. Education might be found under Education/Qualification/Courses;
+Using
+text analytics
+to attempt to understand the text and link it to other information
+See also
+[
+edit
+]
+Data mining
+, discovery of patterns in large data sets using statistics, database knowledge or machine learning
+Data retrieval
+, obtaining data from a database management system, often using a query with a set of criteria
+Extract, transform, load
+(ETL), procedure for copying data from one or more sources, transforming the data at the source system, and copying into a destination system
+Information extraction
+, automated extraction of structured information from unstructured or semi-structured machine-readable data,
+[
+1
+]
+for example using natural language processing to extract content from images, audio or documents
+References
+[
+edit
+]
+^
+Hartley, Miranda.
+"Using AI to Extract Unstructured Data From PDFs: Benefits & Considerations"
+.
+Evolution AI
+. Retrieved
+20 November
+2024
+.
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Data_extraction&oldid=1299307341
+"
+Categories
+:
+Data engineering
+Data warehousing
+Hidden categories:
+Articles with short description
+Short description is different from Wikidata
+Articles needing additional references from August 2023
+All articles needing additional references

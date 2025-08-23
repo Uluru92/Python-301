@@ -1,0 +1,186 @@
+From Wikipedia, the free encyclopedia
+According to
+Ralph Kimball
+,
+[
+1
+]
+in a
+data warehouse
+, a
+degenerate dimension
+is a dimension key (primary key for a dimension table) in the
+fact table
+that does not have its own
+dimension table
+, because all the interesting attributes have been placed in analytic dimensions. The term "degenerate dimension" was originated by
+Ralph Kimball
+.
+As Bob Becker says:
+Degenerate dimensions commonly occur when the fact table's grain is a single transaction (or transaction line). Transaction control header numbers assigned by the operational business process are typically degenerate dimensions, such as order, ticket, credit card transaction, or check numbers. These degenerate dimensions are natural keys of the "parents" of the line items.
+Even though there is no corresponding dimension table of attributes, degenerate dimensions can be quite useful for grouping together related fact tables rows. For example, retail point-of-sale transaction numbers tie all the individual items purchased together into a single market basket. In health care, degenerate dimensions can group the claims items related to a single hospital stay or episode of care.
+[
+2
+]
+Other uses of the term
+[
+edit
+]
+Although most writers and practitioners use the term degenerate dimension correctly, it is very easy to find misleading definitions in online and printed sources. For example, the Oracle FAQ defines a degenerate dimension as a "data dimension that is stored in the fact table rather than a separate dimension table. This eliminates the need to join to a dimension table. You can use the data in the degenerate dimension to limit or 'slice and dice' your fact table measures."
+[
+3
+]
+This common interpretation implies that it is good dimensional modeling practice to place dimension attributes in the fact table, as long as you call them a degenerate dimension. This is not the case; the concept of degenerate dimension was developed by Kimball to support a specific, well-defined exception to the otherwise ironclad rule that dimension attributes are always pulled out into dimension tables.
+See also
+[
+edit
+]
+Data warehouse
+Dimension table
+Early-arriving fact
+Fact table
+Measure (data warehouse)
+Notes
+[
+edit
+]
+^
+Kimball, Ralph; Ross, Margy (2002).
+The Data Warehouse Toolkit: The Complete Guide to Dimensional Modeling
+(Second ed.). Indianapolis, IN: John Wiley & Sons. pp. 50, 398.
+ISBN
+978-0-471-20024-6
+.
+^
+Becker, Bob (3 June 2003).
+"Design Tip #46: Another Look at Degenerate Dimensions"
+.
+Fact Table Core Concepts
+. Kimball Group
+. Retrieved
+25 January
+2013
+.
+^
+"Degenerate dimension"
+.
+Oracle FAQ's
+. Retrieved
+31 July
+2011
+.
+Bibliography
+[
+edit
+]
+Kimball, Ralph
+et al. (1998);
+The Data Warehouse Lifecycle Toolkit
+, p17. Pub. Wiley.
+ISBN
+0-471-25547-5
+.
+Kimball, Ralph
+(1996);
+The Data Warehouse Toolkit
+, p. 100. Pub. Wiley.
+ISBN
+0-471-15337-0
+.
+External links
+[
+edit
+]
+Becker, Bob (3 June 2003).
+"Design Tip #46: Another Look at Degenerate Dimensions"
+.
+Fact Table Core Concepts
+. Kimball Group
+. Retrieved
+25 January
+2013
+.
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Degenerate_dimension&oldid=1221175332
+"
+Categories
+:
+Data warehousing
+Metadata
+Hidden category:
+Use dmy dates from October 2022

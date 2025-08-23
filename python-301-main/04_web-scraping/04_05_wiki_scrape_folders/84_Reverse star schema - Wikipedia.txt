@@ -1,0 +1,135 @@
+From Wikipedia, the free encyclopedia
+Schema optimized for fast data retrieval
+The
+reverse star schema
+is a
+schema
+optimized for fast
+retrieval
+of large quantities of descriptive
+data
+. The design was derived from a warehouse
+star schema
+,
+[
+1
+]
+and its adaptation for descriptive data required that certain key characteristics of the classic star schema be "reversed".
+Model
+[
+edit
+]
+The relation of the central table to those in
+dimension tables
+is one-to-many, or in some cases many-to-many rather than many-to-one; the primary keys of the central table are the
+foreign keys
+in dimension tables, and the main tables are, in general, smaller than the dimension tables.
+Main table columns are typically the source of
+query
+constraints, as opposed to dimension tables in the classical star schema. By starting queries with the smaller table, many results are filtered out early in the querying process, thereby streamlining the entire
+search path
+.
+To add further flexibility, more than one main table is allowed, with main and submain tables having a one-to-many relation. Each main table can have its own dimension tables. To provide further
+query optimization
+, a data set can be partitioned into separate physical schemas on either the same
+database server
+or different database servers.
+See also
+[
+edit
+]
+Snowflake schema
+References
+[
+edit
+]
+^
+"The Data Warehouse LifecycleToolkit"
+. 1998. Archived from
+the original
+on 2011-10-14.
+v
+t
+e
+Data warehouses
+Creating a data warehouse
+Concepts
+Database
+Dimension
+Dimensional modeling
+Fact
+OLAP
+Star schema
+Snowflake schema
+Reverse star schema
+Aggregate
+Single version of the truth
+Variants
+Column-oriented DBMS
+Data hub
+Data mesh
+Ensemble modeling patterns
+Anchor modeling
+Data vault modeling
+Focal point modeling
+HOLAP
+MOLAP
+ROLAP
+Operational data store
+Elements
+Data dictionary
+/
+Metadata
+Data mart
+Sixth normal form
+Surrogate key
+Fact
+Fact table
+Early-arriving fact
+Measure
+Dimension
+Dimension table
+Degenerate
+Slowly changing
+Filling
+Extract, transform, load (ETL)
+Extract, load, transform (ELT)
+Extract
+Transform
+Load
+Using a data warehouse
+Concepts
+Business intelligence
+Dashboard
+Data mining
+Decision support system (DSS)
+OLAP cube
+Data warehouse automation
+Languages
+Data Mining Extensions (DMX)
+MultiDimensional eXpressions (MDX)
+XML for Analysis (XMLA)
+Tools
+Business intelligence software
+Reporting software
+Spreadsheet
+Related
+People
+Bill Inmon
+Information factory
+Ralph Kimball
+Enterprise bus
+Dan Linstedt
+Products
+Comparison of OLAP servers
+Data warehousing products and their producers
+Retrieved from "
+https://en.wikipedia.org/w/index.php?title=Reverse_star_schema&oldid=1115751014
+"
+Categories
+:
+Data warehousing
+Data modeling
+Hidden categories:
+Articles with short description
+Short description matches Wikidata
