@@ -11,29 +11,36 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-URL = "https://en.wikipedia.org/wiki/Web_scraping"
-request = requests.get(URL)
-soup = BeautifulSoup(request.text,"html.parser")
+URL = "https://en.wikipedia.org/wiki/Data_extraction"
+response = requests.get(URL)
+soup = BeautifulSoup(response.text,"html.parser")
 
+with open("04_05_wiki_scrape.html", "w", encoding="utf-8") as f:
+    f.write(soup.prettify())
+
+with open("04_05_wiki_scrape.html", "r", encoding="utf-8") as f:
+    html = f.read()
+
+soup = BeautifulSoup(html, "html.parser")
 content_div = soup.find("div", class_="mw-content-container")
 
-links = soup.find_all("a",href=True)
-
 links = []
-if content_div:
-    for link in content_div.find_all("a", href=True):
-        href = link["href"]
-        if href.startswith("http://") or href.startswith("https://"):
-            full_url = href
 
-        else:
-            full_url = urljoin(URL, href)  # make url absolute
-        
-        if not full_url.startswith("#"):  # skip fragments that stays on same page
-            links.append(full_url)
+for link in content_div.find_all("a", href=True):
+    href = link["href"] 
 
+    full_url = href if href.startswith("http") else urljoin(URL, href) # this way we avoid links that keep us in the same page
+
+    if not full_url.startswith("#"):
+        links.append(full_url)
+
+for l in links:
+    print(l)
+
+'''
 for l in links:
     sub_request = requests.get(l)
     sub_soup = BeautifulSoup(sub_request.text,"html.parser")
     sub_title = sub_soup.find("h1", class_="firstHeading mw-first-heading")
     sub_content_div = sub_soup.find("div", class_="mw-content-ltr mw-parser-output")
+    print(sub_title)'''
