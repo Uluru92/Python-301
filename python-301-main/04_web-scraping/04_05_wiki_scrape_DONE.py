@@ -56,3 +56,4 @@ for idx, url in enumerate(links, 1):
 
     except Exception as e:
         print(f"Failed {url}: {e}")
+        
