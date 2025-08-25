@@ -27,6 +27,7 @@ content_div = soup.find("div", class_="mw-content-container")
 
 links = []
 
+
 for link in content_div.find_all("a", href=True):
     href = link["href"] 
 

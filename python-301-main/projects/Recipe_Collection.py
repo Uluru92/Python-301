@@ -62,7 +62,6 @@ recipe information from the CodingNomads recipe collection and search
 
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import urljoin
 import os
 
 
@@ -72,10 +71,34 @@ if __name__ == "__main__":
     url_recipes = "https://codingnomads.github.io/recipes/"
     response = requests.get(url_recipes)
 
-    print("Ok now is your turn to participate user! Give me 3 ingredients to built a recipe!")
-    Ingredient_by_user_1 = input("Ingrediente 1: ")
-    Ingredient_by_user_2 = input("Ingrediente 2: ")
-    Ingredient_by_user_3 = input("Ingrediente 3: ")
+    # Lets create a folder to hold all the information (text) extracted in each link!
+    os.makedirs("Recipe_Collection", exist_ok=True)
 
-    # Lets create a folder to hold all the information (text) extracted in each link
-    os.makedirs("Recipe Collection", exist_ok=True)
+    # Lets create the html of the main page recipes codingNomads!
+    data = requests.get(url_recipes)
+    soup = BeautifulSoup(data.text,"html.parser")
+
+    with open(r"Recipe_Collection\recipes_cn.html", "w", encoding="utf-8") as f:
+        f.write(soup.prettify())
+
+    # Lets create the list of links inside the main page, to analize them later!    
+    with open(r"Recipe_Collection\recipes_cn.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    soup_html = BeautifulSoup(html, "html.parser")
+    tags_a = soup_html.find_all("a", href=True)
+
+    recipe_links = []
+
+    for tag in tags_a:
+        recipe_links.append(tag["href"])
+    
+    # Lets create an html for each link, to analize them later!
+    for index,link in enumerate(recipe_links):
+        print(f'{index} - {link}')
+
+    def main_code():
+        print("Ok now is your turn to participate user! Give me 3 ingredients to built a recipe!")
+        Ingredient_by_user_1 = input("Ingrediente 1: ")
+        Ingredient_by_user_2 = input("Ingrediente 2: ")
+        Ingredient_by_user_3 = input("Ingrediente 3: ")
