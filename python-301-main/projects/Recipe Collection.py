@@ -60,9 +60,22 @@ recipe information from the CodingNomads recipe collection and search
  through the text of the recipes to find ones that include the provided 
  ingredients.'''
 
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import os
+
+
+
 if __name__ == "__main__":  
+
+    url_recipes = "https://codingnomads.github.io/recipes/"
+    response = requests.get(url_recipes)
+
     print("Ok now is your turn to participate user! Give me 3 ingredients to built a recipe!")
     Ingredient_by_user_1 = input("Ingrediente 1: ")
     Ingredient_by_user_2 = input("Ingrediente 2: ")
     Ingredient_by_user_3 = input("Ingrediente 3: ")
 
+    # Lets create a folder to hold all the information (text) extracted in each link
+    os.makedirs("Recipe Collection", exist_ok=True)
