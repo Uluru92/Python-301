@@ -25,8 +25,8 @@ class Spice(Ingredient):
         print(f"You have an amount of {self.amount}... you are about to eat half...")
         self.amount = self.amount/2
         print(f"YOU ATE HALF! Now you have an amount of {self.amount}... ")
-        
-if __name__ == "__main__":
+
+def practice():
     p = Ingredient('peas', 12)
     print(p)  # OUTPUT: You have 12 peas.
     s = Spice('salt', 200)
@@ -53,3 +53,16 @@ if __name__ == "__main__":
     # Add a second child class if you haven't yet. What else do you need for cooking that could be a child class of either of the two existing classes?
     cucumber = Vegetable("cucumber",10, "green")
     cucumber.check_color()
+
+'''For this project, your task is to create a CLI that takes as input 
+the names of ingredients from a user. Then, your code will fetch the 
+recipe information from the CodingNomads recipe collection and search
+ through the text of the recipes to find ones that include the provided 
+ ingredients.'''
+
+if __name__ == "__main__":  
+    print("Ok now is your turn to participate user! Give me 3 ingredients to built a recipe!")
+    Ingredient_by_user_1 = input("Ingrediente 1: ")
+    Ingredient_by_user_2 = input("Ingrediente 2: ")
+    Ingredient_by_user_3 = input("Ingrediente 3: ")
+
