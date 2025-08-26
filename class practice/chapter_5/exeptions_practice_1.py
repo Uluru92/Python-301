@@ -8,6 +8,6 @@ while True:
     except ValueError:
         print("Please enter a numeric value.")
     except AgeBelowZeroError:
-        print(65, "asd", age) # You can pass a number, an string and even your input!
+        print(65, "asd", age) # You can pass a number, an string and even 
     else:
         print(f"Congratulations, you're {age} years old!")

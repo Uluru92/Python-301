@@ -4,4 +4,3 @@
 # BE RESPECTFUL! Don't scrape sites that don't want to be scraped, and
 # limit the amount of calls you make to their page by saving the response
 # to a file, and parsing the content from that file.
-
