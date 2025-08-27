@@ -1,10 +1,11 @@
 # Demonstrate how you can log in to the Reddit API to receive content that
 # requires authentication, using only `requests` and your credentials.
 
+# Solution:
+
 import requests.auth
 import os
 import json
-
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,12 +24,6 @@ response = requests.post(
     data=post_data,
     headers=headers
     )
-
-print(response.json())
-
-'''output: {'access_token': 'erased by me hehe', 'token_type': 'bearer',
- 'expires_in': 86400, 'scope': '*'}'''
-
 
 # Nos lets use it to get some info! 
 headers = {
