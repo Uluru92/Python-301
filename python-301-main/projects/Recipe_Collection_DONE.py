@@ -64,8 +64,6 @@ import requests
 from bs4 import BeautifulSoup
 import os
 
-
-
 if __name__ == "__main__":  
 
     url_recipes = "https://codingnomads.github.io/recipes/"
