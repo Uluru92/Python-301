@@ -6,3 +6,12 @@
 # print(list_[1])
 #
 # This raises and exception that needs to be handled.
+
+# SOLUTION:
+
+list_ = ["hello world!"]
+
+try:
+    print(list_[1])
+except IndexError as e:
+    print(f"There is something wrong here...error: {e}")
