@@ -7,9 +7,11 @@
 # Note: Feel free to integrate your custom Ingredient() and Soup() classes
 # into the code base, to get some additional practice in working with your
 # custom Python classes.
+import requests
+BASE_URL = "https://codingnomads.github.io/recipes"
 
-URL = "https://codingnomads.github.io/recipes"
+def get_page_content(BASE_URL):
+    response = requests.get(BASE_URL)
+    return response.status_code
 
-
-def hello_world():
-    return 'hello world'
+print(get_page_content(BASE_URL))
