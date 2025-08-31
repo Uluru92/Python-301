@@ -11,3 +11,5 @@
 URL = "https://codingnomads.github.io/recipes"
 
 
+def hello_world():
+    return 'hello world'
