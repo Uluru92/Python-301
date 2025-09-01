@@ -8,10 +8,34 @@
 # into the code base, to get some additional practice in working with your
 # custom Python classes.
 import requests
-BASE_URL = "https://codingnomads.github.io/recipes"
+from bs4 import BeautifulSoup
 
-def get_page_content(BASE_URL):
-    response = requests.get(BASE_URL)
-    return response.status_code
+BASE_URL = "https://codingnomads.github.io/recipes/"
 
-print(get_page_content(BASE_URL))
+def get_page_content(url):
+    """Gets the response from a HTTP call to the URL."""
+    page = requests.get(url)
+    return page
+
+def get_html_content(url):
+    response = get_page_content(url)
+    html = response.text
+    return html
+
+def get_bs4_object(url):
+    html = get_html_content(url)
+    soup = BeautifulSoup(html, "html.parser")
+    return soup
+
+if __name__ == "__main__":
+    index_html = get_html_content(BASE_URL)
+    index_soup = BeautifulSoup(index_html, "html.parser")
+    recipe_links = [link["href"] for link in soup.find_all("a")]
+
+    for r_link in recipe_links:
+        URL = f"{BASE_URL}/{r_link}"
+        html = get_html_content(BASE_URL)
+        soup = BeautifulSoup(html, "html.parser")
+        author = soup.find("p", class_="author").text.strip("by ")
+        recipe = soup.find("div", class_="md").text
+        print(f"({author})\t[{recipe}]\n\n\n")
