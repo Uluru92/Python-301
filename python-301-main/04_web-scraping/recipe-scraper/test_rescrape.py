@@ -22,6 +22,12 @@ class TestRescrape(unittest.TestCase):
         self.assertIsInstance(page, BeautifulSoup)
 
     # can identify all links from the index page
+    def test_identify_all_links_from_index_page(self):
+        BASE_URL = "https://codingnomads.github.io/recipes/"
+        links = get_all_links_from_index(BASE_URL)
+        self.assertIsInstance(links,list)
+        self.assertGreater(len(links),0)
+        self.assertIn("recipes/19-wasn-t-sure-how-to-p.html",links)
 
     # can identify the author of a recipe
 

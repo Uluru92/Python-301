@@ -27,6 +27,11 @@ def get_bs4_object(url):
     soup = BeautifulSoup(html, "html.parser")
     return soup
 
+def get_all_links_from_index(url):
+    index_soup = get_bs4_object(url)
+    links = [a["href"] for a in index_soup.find_all("a", href=True)]
+    return links
+
 if __name__ == "__main__":
     index_html = get_html_content(BASE_URL)
     index_soup = BeautifulSoup(index_html, "html.parser")
