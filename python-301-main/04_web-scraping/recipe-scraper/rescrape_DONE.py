@@ -46,18 +46,39 @@ def get_author_from_index(url):
 
     return authors
 
-def get_main_recipe_text(url):
+def get_titles_from_index(url):
+    links = get_all_links_from_index(url)
 
+    titles = []
+    for link in links:
+        sub_url = url + link
+        sub_soup = get_bs4_object(sub_url)
+
+        title_tag = sub_soup.find("h1", class_="title is-2")
+        if title_tag:
+            title = title_tag.get_text(strip=True)
+            titles.append(title)
+
+    return titles
+
+def get_recipes_from_index(url):
+    links = get_all_links_from_index(url)
+
+    recipes = []
+    for link in links:
+        sub_url = url + link
+        sub_soup = get_bs4_object(sub_url)
+        recipe_text = sub_soup.find("div", class_="md")
+        if recipe_text:
+            recipe = recipe_text.text.strip()
+            recipes.append(recipe)
+    return recipes
 
 if __name__ == "__main__":
-    index_html = get_html_content(BASE_URL)
-    index_soup = BeautifulSoup(index_html, "html.parser")
-    recipe_links = [link["href"] for link in soup.find_all("a")]
+    titles = get_titles_from_index(BASE_URL)
+    authors = get_author_from_index(BASE_URL)
+    recipes = get_recipes_from_index(BASE_URL)
 
-    for r_link in recipe_links:
-        URL = f"{BASE_URL}/{r_link}"
-        html = get_html_content(BASE_URL)
-        soup = BeautifulSoup(html, "html.parser")
-        author = soup.find("p", class_="author").text.strip("by ")
-        recipe = soup.find("div", class_="md").text
-        print(f"({author})\t[{recipe}]\n\n\n")
+    for title, author, recipe in zip(titles, authors, recipes):
+        print(f"Title: {title}\nAuthor: {author}\nRecipe: {recipe}\n")
+        print(f"-"*50)
