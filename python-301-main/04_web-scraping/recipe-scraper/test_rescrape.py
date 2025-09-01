@@ -25,11 +25,23 @@ class TestRescrape(unittest.TestCase):
     def test_identify_all_links_from_index_page(self):
         BASE_URL = "https://codingnomads.github.io/recipes/"
         links = get_all_links_from_index(BASE_URL)
-        self.assertIsInstance(links,list)
-        self.assertGreater(len(links),0)
-        self.assertIn("recipes/19-wasn-t-sure-how-to-p.html",links)
+        self.assertIsInstance(links,list) # Verify we get a list
+        self.assertGreater(len(links),0) # Verify the list is not empty
+        self.assertIn("recipes/19-wasn-t-sure-how-to-p.html",links) # Verify an existing link
 
     # can identify the author of a recipe
+    def test_can_identify_author(self):
+        BASE_URL = "https://codingnomads.github.io/recipes/"
+        authors = get_author_from_index(BASE_URL)
+
+        self.assertIsInstance(authors, list) # Verify we get a list
+        self.assertGreater(len(authors), 0) # Verify the list is not empty
+
+        for author in authors:
+            self.assertIsInstance(author, str) # Verify we get a string
+            self.assertFalse(author.lower().startswith("by "))  # Verify the prefix "by " was deleted
+            self.assertGreater(len(author.strip()), 0)  # Verify the list is not empty
+            self.assertIn("swilliams2207",authors) # Verify an existing author
 
     # can get the main recipe text
     

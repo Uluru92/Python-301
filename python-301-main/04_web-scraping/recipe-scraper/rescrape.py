@@ -32,6 +32,23 @@ def get_all_links_from_index(url):
     links = [a["href"] for a in index_soup.find_all("a", href=True)]
     return links
 
+def get_author_from_index(url):
+    links = get_all_links_from_index(url)
+
+    authors = []
+    for link in links:
+        sub_url = url + link
+        sub_soup = get_bs4_object(sub_url)
+        author_tag = sub_soup.find("p", class_="subtitle is-3 author")
+        if author_tag:
+            author = author_tag.get_text(strip=True).replace("by ", "", 1)
+            authors.append(author)
+
+    return authors
+
+    
+
+
 if __name__ == "__main__":
     index_html = get_html_content(BASE_URL)
     index_soup = BeautifulSoup(index_html, "html.parser")
