@@ -44,6 +44,8 @@ class TestRescrape(unittest.TestCase):
             self.assertIn("swilliams2207",authors) # Verify an existing author
 
     # can get the main recipe text
+    def test_get_main_recipe_text(self):
+        
     
 if __name__ == "__main__":
     unittest.main()

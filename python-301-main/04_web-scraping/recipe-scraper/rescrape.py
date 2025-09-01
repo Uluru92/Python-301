@@ -46,7 +46,7 @@ def get_author_from_index(url):
 
     return authors
 
-    
+def get_main_recipe_text(url):
 
 
 if __name__ == "__main__":
