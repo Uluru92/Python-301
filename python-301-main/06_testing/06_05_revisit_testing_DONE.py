@@ -41,13 +41,17 @@ def get_data_json_from_response(url):
     data = response.json()
     return data
 
+def save_data_json_in_file_json(path, data):
+    with open(path, "w", encoding="utf-8") as fout:
+        json.dump(data, fout, indent=4, ensure_ascii=False)
+    return path
+
 create_folder_to_keep_json_files('files_exercise_06_05')
 
 for index,pokemon in enumerate(list_pokemons):
     url = f"{BASE_URL}{pokemon}"
     data = get_data_json_from_response(url)
-    with open(rf"files_exercise_06_05\pokemon_{index+1}.json", "w", encoding="utf-8") as fout:
-        json.dump(data, fout, indent=4, ensure_ascii=False)
+    save_data_json_in_file_json(rf"files_exercise_06_05\pokemon_{index+1}.json",data)
 
 class TestAssembleTeam(unittest.TestCase):
     # setUp variables for all tests...
@@ -68,6 +72,20 @@ class TestAssembleTeam(unittest.TestCase):
         data = get_data_json_from_response(BASE_URL)
         self.assertIsInstance(data, (dict, list))
 
+    # Check if the data json was saved in a .json file
+    def test_data_json_saved_in_json_file(self):
+        test_path = "test.json"
+        test_data = {"name": "pikachu"}
+        output = save_data_json_in_file_json(test_path, test_data)
+
+        # check return value
+        self.assertEqual(output, test_path)
+
+        # check file exists and content is correct
+        with open(test_path, "r",encoding="utf-8") as f:
+            saved_data = json.load(f)
+        self.assertEqual(saved_data, test_data)
+        
 if __name__ == "__main__":
     unittest.main()
         
