@@ -5,7 +5,6 @@
 # by repeatedly running your test suite against your changes.
 
 # I am going to revisit the previous exercise 04_03_poke_info!
-# ok... 
 
 ''''# Use the Pokemon API at https://pokeapi.co/ to assemble a team of your
 # six favorite Pokémon.
@@ -88,4 +87,3 @@ class TestAssembleTeam(unittest.TestCase):
         
 if __name__ == "__main__":
     unittest.main()
-        
