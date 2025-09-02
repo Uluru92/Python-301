@@ -10,3 +10,18 @@
 # Keep in mind that you will run into an error when you'll attempt to import
 # this file, because Python modules can't begin with a number.
 # You can rename the file to make it work :)
+
+import unittest
+
+def input_a_number():
+    number = int(input("Please type a number: \n"))
+    return number
+
+class TestInput(unittest.TestCase):
+    def test_input_int(self):
+        self.assertEqual(type(input_a_number()), type(27)) # Test that pass
+    def test_input_str(self):
+        self.assertEqual(type(input_a_number()), type(input_a_number)) # Test that pass
+
+if __name__ == "__main__":
+    unittest.main()
