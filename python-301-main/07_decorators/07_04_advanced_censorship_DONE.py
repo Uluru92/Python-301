@@ -24,9 +24,9 @@ def decorator_censor_specific_word(*args):
         return wrapper
     return decorator_quotes
 
-@decorator_censor_specific_word("shoot", "crap")
+@decorator_censor_specific_word("idiot", "crap")
 def say_something(text):
     return text
 
 print(say_something("You are a jackass and full of crap!"))
-print(say_something("Hello you damn bastard son of a bitch, please go to hell you douche damn asshole"))
+print(say_something("Hello you damn crap bastard son of an idiot bitch, please go to hell you douche damn asshole"))
