@@ -63,3 +63,5 @@ task = morning_tasks.dequeue()
 # Got item: get dressed. Updated queue size: 2
 
 print(f"Todo: {task}")  # Todo: get dressed
+task2 = morning_tasks.dequeue() 
+task3 = morning_tasks.dequeue() 
